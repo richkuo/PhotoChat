@@ -1,0 +1,41 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+    <div class="span8">
+      <h3><%= current_user.name %>'s Update Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+
+<% else %>
+
+<div class="hero-unit">
+<h1>Welcome to my website.</h1>
+<h2>Take a minute to sign up!</h2>
+<br>
+<div class="row">
+  <div class="span6">
+    <%= form_for(@user) do |f| %>
+
+      <%= render 'users/fields', f: f %>
+
+      <%= f.submit "Sign Up", class: "btn btn-large btn-primary" %>
+
+    <% end %>
+  </div>
+</div>
+</div>
+<div class="hero-unit">
+   <h4>Already a member? Awesome! Welcome back. <p><p><%= link_to "Sign in", signin_path, class: "btn btn-large btn-primary" %></h4>
+</div>
+<% end %>
