@@ -9,12 +9,6 @@ before_filter :signed_in_user, only: [:brogramming, :fitness]
     @user = User.new unless signed_in?
   end
 
-  def brogramming
-  end
-
-  def fitness
-  end
-
   def about
   end
 
