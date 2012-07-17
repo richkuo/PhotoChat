@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
    has_secure_password
    has_many :microposts, dependent: :destroy
    has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+
+   has_many :events, foreign_key: "host_id", dependent: :destroy
+   has_many :pictures
             
    has_many :followed_users, through: :relationships, source: :followed
    
@@ -35,11 +38,6 @@ class User < ActiveRecord::Base
    validates :password, length: { minimum: 6 }
    validates :password_confirmation, presence: true
    
-   def feed
-     # Preliminary
-     Micropost.where("user_id = ?", id)
-   end
-
    def following?(other_user)
      relationships.find_by_followed_id(other_user.id)
    end
@@ -54,6 +52,10 @@ class User < ActiveRecord::Base
 
    def feed
      Micropost.from_users_followed_by(self)
+   end
+
+   def show_events
+     events
    end
 
    private

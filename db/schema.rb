@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120714040530) do
+ActiveRecord::Schema.define(:version => 20120717212002) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(:version => 20120714040530) do
   end
 
   add_index "events", ["host_id", "created_at"], :name => "index_events_on_host_id_and_created_at"
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "viewer_id"
+    t.integer  "uploader_id"
+    t.integer  "request_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "invitations", ["uploader_id"], :name => "index_invitations_on_uploader_id"
+  add_index "invitations", ["viewer_id", "uploader_id"], :name => "index_invitations_on_viewer_id_and_uploader_id", :unique => true
+  add_index "invitations", ["viewer_id"], :name => "index_invitations_on_viewer_id"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
