@@ -1,0 +1,10 @@
+<% provide(:title, 'Event Pictures') %>
+<h3><%= current_event.description %></h3>
+
+<%= will_paginate %>
+
+<ul class="pictures">
+  <%= render @users %>
+</ul>
+
+<%= will_paginate %>

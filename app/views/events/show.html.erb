@@ -8,4 +8,8 @@
       <%= render 'shared/stats' %>
     </section>
   </aside>
-
+<% if uploader? || host? %>
+<div class="span8">
+  <%= render 'pictures/index' if uploader? %>
+  
+<% end %>

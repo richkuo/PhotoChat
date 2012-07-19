@@ -16,7 +16,12 @@ class Event < ActiveRecord::Base
   def feed
   end
 
-  def uploading?(other_user)
+  def host?
+    current_user.id == event.host_id
+  end
+
+  def uploader?(other_user)
+    invitations.find_by_uploader_id(other_user.id)
   end
 
   def add_uploader!(other_user)
@@ -27,7 +32,7 @@ class Event < ActiveRecord::Base
     invitations.find_by_uploader_id(other_user.id).destroy
   end
 
-  def viewing?(other_user)
+  def viewer?(other_user)
   end
 
   def add_viewer!(other_user)
