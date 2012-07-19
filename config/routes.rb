@@ -5,9 +5,16 @@ Blog::Application.routes.draw do
      end
    end
 
+   resources :events do
+     member do
+       get :uploader, :viewer
+     end
+   end
+
    resources :sessions, only: [:new, :create, :destroy]
    resources :microposts, only: [:create, :destroy]
    resources :relationships, only: [:create, :destroy]
+   resources :invitations, only: [:create, :destroy]
 
    root to: 'pages#home'
 
@@ -20,6 +27,8 @@ Blog::Application.routes.draw do
 
    match '/signin', to: 'sessions#new'
    match '/signout', to: 'sessions#destroy', via: :delete
+
+   match '/event/host', to: 'events#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

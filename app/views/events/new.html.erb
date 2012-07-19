@@ -1,0 +1,26 @@
+<%= provide(:title, 'Host an Event') %>
+
+<% if signed_in? %>
+
+<div class = "center">
+<h1>Host a New Event</h1>
+</div>
+
+<div class="row">
+  <div class="span6 offset3">
+  <%= form_for(@event) do |f| %>
+
+  <%= render 'fields', f:f %>
+
+  <%= f.submit "Host the event!", class: "btn btn-large btn-primary" %>
+  <% end %>
+  </div>
+</div>
+
+<% else %>
+
+<% flash[:error] = "Please sign up or sign in to create an event" %>
+
+<% redirct_to root_path %>
+
+<% end %>
