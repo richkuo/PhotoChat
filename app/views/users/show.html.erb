@@ -19,5 +19,9 @@
       </ol>
       <%= will_paginate @microposts %>
     <% end %>
+      <h3>Number of events hosted: <%= @user.events.count %></h3>
+      <ol class="microposts">
+        <%= render @events %>
+      </ol>
   </div>
 </div>

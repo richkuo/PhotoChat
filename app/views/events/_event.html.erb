@@ -1,0 +1,10 @@
+<li id="<%= event.id %>">
+  <span class="content"><b><%= link_to event.title, event %></b></span>
+  <span class="content"><%= event.description %></span>
+  <span class="timestamp">
+    Created <%= time_ago_in_words(event.created_at) %> ago.
+  </span>
+  <% if current_user?(event.user) %>
+    <%= link_to "delete", event, method: :delete, data: { confirm: "Are you sure you want to permanently delete this event?" }, title: event.title %>
+  <% end %>
+</li>

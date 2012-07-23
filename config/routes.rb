@@ -18,8 +18,6 @@ Blog::Application.routes.draw do
 
    root to: 'pages#home'
 
-   match '/brogramming', to: 'pages#brogramming'
-   match '/fitness', to: 'pages#fitness'
    match '/about', to: 'pages#about'
    match '/contact', to: 'pages#contact'
    
@@ -27,8 +25,6 @@ Blog::Application.routes.draw do
 
    match '/signin', to: 'sessions#new'
    match '/signout', to: 'sessions#destroy', via: :delete
-
-   match '/event/host', to: 'events#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

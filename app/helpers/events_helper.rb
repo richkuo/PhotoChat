@@ -5,7 +5,7 @@ module EventsHelper
    end
 
    def current_event
-     @current_event ||= Event.find_by_host_id(params[:id])
+     @current_event ||= Event.find_by_id(params[:id])
    end
 
    def current_event?(event)
@@ -16,6 +16,14 @@ module EventsHelper
    end
 
    def uploader_access
+   end
+
+   def uploader?(other_user)
+     invitations.find_by_uploader_id(other_user.id)
+   end
+
+   def host?
+     current_user.id == @event.host_id
    end
 
 

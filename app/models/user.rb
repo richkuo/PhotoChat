@@ -54,10 +54,6 @@ class User < ActiveRecord::Base
      Micropost.from_users_followed_by(self)
    end
 
-   def show_events
-     events
-   end
-
    private
 
      def create_remember_token

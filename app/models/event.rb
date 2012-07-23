@@ -13,17 +13,6 @@ class Event < ActiveRecord::Base
 
   default_scope order: 'events.created_at DESC'
 
-  def feed
-  end
-
-  def host?
-    current_user.id == event.host_id
-  end
-
-  def uploader?(other_user)
-    invitations.find_by_uploader_id(other_user.id)
-  end
-
   def add_uploader!(other_user)
     invitations.create!(uploader_id: other_user.id)
   end
