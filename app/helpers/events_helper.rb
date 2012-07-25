@@ -12,18 +12,8 @@ module EventsHelper
      event == current_event
    end
 
-   def viewer_access
-   end
-
-   def uploader_access
-   end
-
-   def uploader?(other_user)
-     invitations.find_by_uploader_id(other_user.id)
-   end
-
    def host?
-     current_user.id == @event.host_id
+     current_user.id == current_event.host_id
    end
 
 

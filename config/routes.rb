@@ -7,7 +7,7 @@ Blog::Application.routes.draw do
 
    resources :events do
      member do
-       get :uploader, :viewer
+       get :uploaders, :viewers
      end
    end
 

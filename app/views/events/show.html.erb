@@ -1,4 +1,4 @@
-<%= provide(:title, @event.title) %>
+<%= provide(:title, @event.title ) %>
 <div class="row">
   <aside class="span4">
     <section>
@@ -7,11 +7,25 @@
     <section>
       <%= render 'shared/stats' %>
     </section>
+    <section>
+      <% if host? %>
+        <%= link_to "Invite your friends", uploaders_event_path, class: "btn btn-large btn-primary" %>
+      <% end %>
+    </section>
+    <section>
+      Number of uploaders in this event: 
+      <%= current_event.uploaders.count %>
+      <br>show a list of current_event.uploaders in this area
+    </section>
   </aside>
 <% if host? %>
 <div class="span8">
   <%= render 'pictures/index' %>
   render pictures/index
-</div>
+<% else %>
 
+  Sorry! You do not have permission to view this event.
+
+</div>
 <% end %>
+</div>

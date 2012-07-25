@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :request_id, :uploader_id, :viewer_id
+  attr_accessible :uploader_id, :viewer_id
 
   belongs_to :uploader, class_name: "Event"
   belongs_to :viewer, class_name: "Event"

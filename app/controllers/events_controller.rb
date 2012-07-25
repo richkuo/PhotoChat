@@ -1,10 +1,22 @@
 class EventsController < ApplicationController
-   before_filter :signed_in_user, only: [:create, :destroy]
-   before_filter :correct_user, only: :destroy
+   before_filter :signed_in_user, only: [:uploaders, :create, :destroy]
+   before_filter :host_user, only: [:uploaders, :destroy]
 
 
    def index
-     @events = Event.paginate(page: params[:page])
+     @users = Event.paginate(page: params[:page])
+   end
+
+   def uploaders
+     @event = Event.find(params[:id])
+     @users = User.paginate(page: params[:page])
+   end
+
+   def _uploader_form
+     @user = User.find(params[:id])
+   end
+
+   def viewers
    end
 
    def show
@@ -31,13 +43,11 @@ class EventsController < ApplicationController
      redirect_to root_path
    end
 
-
    private
-     def admin_user
-       redirect_to(root_path) unless current_user.admin?
+
+     def host_user
+       redirect_to root_path unless current_user.id == current_event.host_id
      end
-
-
 
 
 end

@@ -1,0 +1,32 @@
+<% provide(:title, @event.title) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <%= render 'shared/user_info' %>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+    <section>
+      This event has <%= current_event.uploaders.count %> uploaders.
+    </section>
+  </aside>
+<% if host? %>
+<div class="span8">
+<h1>Invite your friends to your event!</h1><br>
+<h2>They can upload pictures!</h2><br>
+
+<ul class="users">
+  <% @users.each do |user| %>
+  <li>
+  <% unless current_event.host_id == user.id %>
+    <%= gravatar_for user, size: 59 %>
+    <%= link_to user.name, user %>
+      <%= render partial: 'uploader_form', :locals => { :user => user } %>
+  <% end %>
+  </li>
+  <% end %>
+<% end %>
+</ul>
+</div>
+</div>

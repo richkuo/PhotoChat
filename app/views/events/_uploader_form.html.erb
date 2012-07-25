@@ -1,10 +1,11 @@
-<% provide(:title, "Add Uploaders") %>
-
-
-<%= will_paginate %>
-
-<ul class"users">
-  <%= render @users %>
-</ul>
-
-<%= will_paginate %>
+<div id="uploader_form">
+<% unless current_user?(user) %>
+  <% if current_event.uploader?(user) %>
+    <%= render partial: 'remove_uploader' %>
+  <% else %>
+    <%= render partial: 'add_uploader', :locals => { :user => user } %>
+  <% end %>
+<% else %>
+ | This is you.
+  </div>
+<% end %>
