@@ -2,10 +2,12 @@
 <% unless current_user?(user) %>
   <% if current_event.uploader?(user) %>
     <%= render partial: 'remove_uploader' %>
-  <% else %>
-    <%= render partial: 'add_uploader', :locals => { :user => user } %>
+  <% else %>@user
+    <%= @user.id %>
+    <%= form_for(current_event.invitations.build(uploader_id: user.id)) do |f| %>
+      <div>user<%= user.id %><%= f.hidden_field :uploader_id %></div>
+      <%= f.submit user.id, class: "btn btn-large btn-primary" %>
+    <% end %>
   <% end %>
-<% else %>
- | This is you.
   </div>
 <% end %>

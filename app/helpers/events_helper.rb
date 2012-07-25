@@ -16,6 +16,8 @@ module EventsHelper
      current_user.id == current_event.host_id
    end
 
-
+   def add_uploader!(other_user)
+     invitations.create!(uploader_id: other_user.id)
+   end
 
 end
