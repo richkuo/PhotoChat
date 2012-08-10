@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120717212002) do
   add_index "events", ["host_id", "created_at"], :name => "index_events_on_host_id_and_created_at"
 
   create_table "invitations", :force => true do |t|
+    t.integer  "event_id"
     t.integer  "viewer_id"
     t.integer  "uploader_id"
     t.integer  "request_id"
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120717212002) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "invitations", ["event_id"], :name => "index_invitations_on_event_id"
   add_index "invitations", ["uploader_id"], :name => "index_invitations_on_uploader_id"
   add_index "invitations", ["viewer_id", "uploader_id"], :name => "index_invitations_on_viewer_id_and_uploader_id", :unique => true
   add_index "invitations", ["viewer_id"], :name => "index_invitations_on_viewer_id"

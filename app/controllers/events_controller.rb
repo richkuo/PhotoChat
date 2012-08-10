@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
 
    def index
-     @users = Event.paginate(page: params[:page])
+     @events = Event.paginate(page: params[:page])
    end
 
    def uploaders
@@ -39,8 +39,9 @@ class EventsController < ApplicationController
    end
 
    def destroy
+     @event = Event.find(params[:id])
      @event.destroy
-     redirect_to root_path
+     redirect_to current_user
    end
 
    private

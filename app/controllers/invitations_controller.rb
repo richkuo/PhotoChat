@@ -4,7 +4,7 @@ class InvitationsController <ApplicationController
 
    def create
      @user = User.find_by_id(params[:invitation][:uploader_id])
-     current_event.add_uploader!
+     current_event.add_uploader!(@user)
      #respond_to do |format|
       # format.html { redirect_to uploaders_path}
        #format.js

@@ -15,6 +15,8 @@
     <section>
       Number of uploaders in this event: 
       <%= current_event.uploaders.count %>
+      <br>Host ID:
+      <%= current_event.host_id %>
       <br>Event title: <%= @event.title %>
     </section>
   </aside>
@@ -22,6 +24,8 @@
 <div class="span8">
   <%= render 'pictures/index' %>
   render pictures/index
+  host true
+  <%= link_to "delete", @event, method: :delete, data: { confirm: "Are you sure you want to permanently delete this event?" } %>
 <% else %>
 
   Sorry! You do not have permission to view this event.

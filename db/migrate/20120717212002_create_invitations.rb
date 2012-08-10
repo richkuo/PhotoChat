@@ -1,6 +1,7 @@
 class CreateInvitations < ActiveRecord::Migration
   def change
     create_table :invitations do |t|
+      t.integer :event_id
       t.integer :viewer_id
       t.integer :uploader_id
       t.integer :request_id
@@ -8,6 +9,7 @@ class CreateInvitations < ActiveRecord::Migration
       t.timestamps
     end
 
+    add_index :invitations, :event_id
     add_index :invitations, :viewer_id
     add_index :invitations, :uploader_id
     add_index :invitations, [:viewer_id, :uploader_id], unique: true

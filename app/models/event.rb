@@ -1,8 +1,9 @@
 class Event < ActiveRecord::Base
   attr_accessible :title, :description
+  
   belongs_to :user
 
-  has_many :invitations, foreign_key: "uploader_id", dependent: :destroy
+  has_many :invitations, foreign_key: "event_id", dependent: :destroy
 
   has_many :uploaders, through: :invitations, source: :uploader
 
@@ -10,6 +11,7 @@ class Event < ActiveRecord::Base
   validates :host_id, presence: true
 
   default_scope order: 'events.created_at DESC'
+
   
   def uploading?(other_user)
     invitations.find_by_uploader_id(other_user.id)
