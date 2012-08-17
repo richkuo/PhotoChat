@@ -1,11 +1,13 @@
 class Event < ActiveRecord::Base
   attr_accessible :title, :description
   
-  belongs_to :user
+  has_one :host, class_name: "User"
 
   has_many :invitations, foreign_key: "event_id", dependent: :destroy
 
   has_many :uploaders, through: :invitations, source: :uploader
+
+  has_many :pictures
 
   validates :description, length: { maximum: 200 }
   validates :host_id, presence: true

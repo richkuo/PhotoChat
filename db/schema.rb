@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717212002) do
+ActiveRecord::Schema.define(:version => 20120810114636) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120717212002) do
     t.boolean  "private"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "image"
   end
 
   add_index "events", ["host_id", "created_at"], :name => "index_events_on_host_id_and_created_at"
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20120717212002) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "image"
   end
 
   add_index "pictures", ["user_id", "created_at"], :name => "index_pictures_on_user_id_and_created_at"

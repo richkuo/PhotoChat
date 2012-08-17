@@ -13,22 +13,27 @@
       <% end %>
     </section>
     <section>
-      Number of uploaders in this event: 
+      Number of attendees in this event: 
       <%= current_event.uploaders.count %>
       <br>Host ID:
       <%= current_event.host_id %>
       <br>Event title: <%= @event.title %>
+      <br>Number of pictures in this event:
+      <%= @event.pictures.count %>
     </section>
   </aside>
-<% if host? %>
+<% if current_user.following_host? %>
 <div class="span8">
-  <%= render 'pictures/index' %>
-  render pictures/index
-  host true
-  <%= link_to "delete", @event, method: :delete, data: { confirm: "Are you sure you want to permanently delete this event?" } %>
+  <%= link_to 'Upload a new picture', new_picture_path(:event_id => @event) %>
+  <% for picture in @event.pictures %>
+  a
+  <%= image_tag picture.image_url.to_s %>
+  <%= picture.event_id %>
+  <%= picture.user_id %>
+  <% end %>
 <% else %>
 
-  Sorry! You do not have permission to view this event.
+Sorry <%= current_user.name %>, you do not have permission to view this event.
 
 </div>
 <% end %>

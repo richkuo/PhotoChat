@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
      relationships.find_by_followed_id(other_user.id)
    end
 
+   def following_host?
+     relationships.find_by_followed_id(1)
+   end
+
    def follow!(other_user)
      relationships.create!(followed_id: other_user.id)
    end

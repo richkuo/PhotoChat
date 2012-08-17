@@ -4,6 +4,5 @@
   <span class="timestamp">
     Created <%= time_ago_in_words(event.created_at) %> ago.
   </span>
-  <%= event.user %>
     <% link_to "delete", event, method: :delete, data: { confirm: "Are you sure you want to permanently delete this event?" }, title: event.title %>
 </li>
