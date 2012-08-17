@@ -6,6 +6,7 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
    end
 
    def index
+     @pictures = Picture.paginate(page: params[:page])
    end
 
    def create
@@ -15,7 +16,7 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
        # hardcoding the event id because current_event returns an error
        #future iterations should have the @picture.event_id
        # set to the actual event id, not 1
-       # @picture.event_id = 1
+       @picture.event_id = 9
        @picture.user_id = current_user.id
        redirect_to new_picture_path
      else

@@ -22,9 +22,10 @@
       <%= @event.pictures.count %>
     </section>
   </aside>
-<% if current_user.following_host? %>
+<% if current_user.following_host? || current_user.admin?%>
 <div class="span8">
   <%= link_to 'Upload a new picture', new_picture_path(:event_id => @event) %>
+  <%= render @pictures %>
   <% for picture in @event.pictures %>
   a
   <%= image_tag picture.image_url.to_s %>

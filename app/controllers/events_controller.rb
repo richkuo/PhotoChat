@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
    def show
      @event = Event.find(params[:id])
+     @pictures = Picture.paginate(page: params[:page])
    end
 
    def new

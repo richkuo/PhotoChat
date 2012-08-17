@@ -4,5 +4,7 @@
   <span class="timestamp">
     Created <%= time_ago_in_words(event.created_at) %> ago.
   </span>
-    <% link_to "delete", event, method: :delete, data: { confirm: "Are you sure you want to permanently delete this event?" }, title: event.title %>
+  <% if current_user.admin? %>
+    <%= link_to "delete", event, method: :delete, data: { confirm: "Are you sure you want to permanently delete this event?" }, title: event.title %>
+  <% end %>
 </li>
