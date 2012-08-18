@@ -1,6 +1,8 @@
-<li id="<%= event.id %>">
-  <span class="content"><b><%= link_to event.title, event %></b></span>
-  <span class="content"><%= event.description %></span>
+<ul id="<%= event.id %>">
+  <span class="content"><h2><%= link_to event.title, event %></h2></span>
+  <span class="content"><h3><%= event.description %></h3></span>
+  <span class="pictures">Currently has <%= pluralize(event.pictures.count, "picture")  %>.</span>
+  <br>
   <span class="timestamp">
     Created <%= time_ago_in_words(event.created_at) %> ago.
   </span>

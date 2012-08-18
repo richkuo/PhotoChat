@@ -12,15 +12,17 @@
       </section>
     </aside>
     <div class="span8">
-      <h3><%= current_user.name %>'s Events</h3>
+      <ol class="hero-unit">
+      <%= render @events %>
+      </ol>
     </div>
   </div>
-
 <% else %>
 
 <div class="hero-unit">
-<h1>Welcome to my website.</h1>
-<h2>Take a minute to sign up!</h2>
+<h2>Welcome to the picture website for</h2><br><h1>2012 DDRC Family Chan Camp</h1>
+
+<br><h2>Please take a minute to sign up!</h2>
 <br>
 <div class="row">
   <div class="span6">
@@ -35,6 +37,6 @@
 </div>
 </div>
 <div class="hero-unit">
-   <h4>Already a member? Awesome! Welcome back. <p><p><%= link_to "Sign in", signin_path, class: "btn btn-large btn-primary" %></h4>
+   <h4>Already signed up? Great! Welcome back.<p><p><p><%= link_to "Sign in", signin_path, class: "btn btn-large btn-primary" %></h4>
 </div>
 <% end %>

@@ -1,2 +1,7 @@
-<%= current_user.pictures %>
-<%= render @pictures %>
+<% if current_user.following_host? || current_user.admin?%>
+  <div class="hero-unit">
+    <%= render @pictures %>
+  </div>
+<% else %>
+Sorry, you do not have permission to access these pictures.
+<% end %>

@@ -1,6 +1,13 @@
 <section>
 <p>
+<section>
 <br>Image: <%= image_tag picture.image %>
+</section>
+<section>
 <br>Uploaded by <%= picture.user_id %> <%=time_ago_in_words(picture.created_at) %> ago.
+<% if current_user.admin? %>
+  <%= link_to "Delete", picture, :confirm => "Are you sure you want to permanently delete this picture?", :method => :delete %>
+<% end %>
 </p>
+</section>
 </section>

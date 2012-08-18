@@ -7,14 +7,15 @@
     <section>
       <%= render 'shared/stats' %>
     </section>
-    <section>
       <% if host? %>
+      <section>
         <%= link_to "Invite your friends", uploaders_event_path, class: "btn btn-large btn-primary" %>
       <% end %>
     </section>
     <section>
       Number of attendees in this event: 
-      <%= current_event.uploaders.count %>
+      <% current_event.uploaders.count %>
+      <%= User.find(current_event.host_id).followers.count%>
       <br>Host ID:
       <%= current_event.host_id %>
       <br>Event title: <%= @event.title %>
@@ -22,16 +23,15 @@
       <%= @event.pictures.count %>
     </section>
   </aside>
-<% if current_user.following_host? || current_user.admin?%>
+<% if current_user.following_host? || current_user.admin? %>
 <div class="span8">
   <%= link_to 'Upload a new picture', new_picture_path(:event_id => @event) %>
-  <%= render @pictures %>
+<div class="hero-unit">  
   <% for picture in @event.pictures %>
-  a
   <%= image_tag picture.image_url.to_s %>
-  <%= picture.event_id %>
-  <%= picture.user_id %>
+  Uploaded by <%= User.find(picture.user_id).name %>, <%= time_ago_in_words(picture.created_at) %> ago.
   <% end %>
+</div>
 <% else %>
 
 Sorry <%= current_user.name %>, you do not have permission to view this event.
