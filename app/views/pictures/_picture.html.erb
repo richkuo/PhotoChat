@@ -1,16 +1,13 @@
 <section>
 <p>
-<section>
 <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
 <%= image_tag picture.image if picture.image?%>
 </div>
-</section>
 <section>
 <br>Uploaded by <%= User.find(picture.user_id).name %> <%=time_ago_in_words(picture.created_at) %> ago.
 <% if current_user.admin? %>
-  <%= link_to "Delete", picture, :confirm => "Are you sure you want to permanently delete this picture?", :method => :delete %>
-</p>
+  <%= link_to "Delete", event_picture_path(:event_id, picture), :confirm => "Are you sure you want to permanently delete this picture?", :method => :delete %>
 </section>
-</section>
-<br>
 <% end %>
+<br><br>
+</section></p>

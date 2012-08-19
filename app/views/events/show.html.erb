@@ -9,7 +9,8 @@
     </section>
       <% if current_user.following_host? || current_user.admin? %>
       <section>
-        <%= link_to "Upload Pictures", new_picture_path, class: "btn btn-large btn-primary" %>
+        <%= link_to "Upload Pictures", new_event_picture_path(@event), class: "btn btn-large btn-primary" %>
+        | <%= link_to "View All Pictures", event_pictures_path(@event), class: "btn btn-large btn-success" %>
       <% end %>
     </section>
     <section>
@@ -18,19 +19,19 @@
       <%= User.find(current_event.host_id).followers.count%>
       <br>Host ID:
       <%= current_event.host_id %>
-      <br>Event title: <%= @event.title %>
       <br>Number of pictures in this event:
       <%= @event.pictures.count %>
     </section>
   </aside>
 <% if current_user.following_host? || current_user.admin? %>
 <div class="span8">
-<div class="hero-unit">  
+<h1><%= @event.title %></h1><br>
+<h2><%= @event.description %><br><br></h2>
+<div class="hero-unit">
   <% for picture in @event.pictures %>
-  <br>
   <div><p>
   <%= image_tag picture.image_url(:thumb) %>
-  <br>Uploaded by <%= User.find(picture.user_id).name %>, <%= time_ago_in_words(picture.created_at) %> ago.
+  <br>Uploaded by <%= User.find(picture.user_id).name %>, <%= time_ago_in_words(picture.created_at) %> ago.<br><br>
   </div></p>
   <% end %>
 </div>

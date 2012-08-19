@@ -6,7 +6,7 @@ Blog::Application.routes.draw do
    end
 
    resources :events do
-     resources :uploaders, :pictures
+     resources :pictures
    end
 
    resources :sessions, only: [:new, :create, :destroy]

@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
 before_filter :signed_in_user, only: [:new, :create, :destroy]
 
    def new
+     @event = Event.find(params[:event_id])
      @picture = Picture.new(:user_id => current_user.id)
 
      respond_to do |format|
@@ -12,14 +13,17 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
    end
 
    def show
+     @event = Event.find(params[:id])
      @picture = Picture.find(params[:id])
    end
 
    def index
+     #@event = Event.find(params[:event_id])
      @pictures = Picture.paginate(page: params[:page])
    end
 
    def create
+     #@event = Event.find(params[:event_id])
      @picture = Picture.new(:event_id => params[:event_id], :user_id => current_user.id, :image => params[:image])
      if @picture.save
        flash[:success] = "Successfully uploaded the picture! Feel free to add more."
@@ -30,7 +34,7 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
            :layout => false
          }
          format.json{
-           render :json => [@picture.to_jq_upload].to_json, status: :created, location: @picture
+           render :json => [@picture.to_jq_upload].to_json, status: :created, location: @event
          }
          end
      else
