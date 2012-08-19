@@ -6,16 +6,14 @@ Blog::Application.routes.draw do
    end
 
    resources :events do
-     member do
-       get :uploaders, :pictures
-     end
+     resources :uploaders, :pictures
    end
 
    resources :sessions, only: [:new, :create, :destroy]
    resources :microposts, only: [:create, :destroy]
    resources :relationships, only: [:create, :destroy]
    resources :invitations, only: [:create, :destroy]
-   resources :pictures, only: [:new, :create, :destroy, :show, :index]
+#   resources :pictures, only: [:new, :create, :destroy, :show, :index]
 
    root to: 'pages#home'
 

@@ -2,7 +2,7 @@ class PicturesController < ApplicationController
 before_filter :signed_in_user, only: [:new, :create, :destroy]
 
    def new
-     @picture = Picture.new(:event_id => params[:event_id], :user_id => current_user.id)
+     @picture = Picture.new(:user_id => current_user.id)
 
      respond_to do |format|
        format.html

@@ -9,7 +9,7 @@
     </section>
       <% if current_user.following_host? || current_user.admin? %>
       <section>
-        <%= link_to "Upload Pictures", new_picture_path(:event_id => @event), class: "btn btn-large btn-primary" %>
+        <%= link_to "Upload Pictures", new_picture_path, class: "btn btn-large btn-primary" %>
       <% end %>
     </section>
     <section>
