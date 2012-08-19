@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
 
   has_many :pictures
 
+  accepts_nested_attributes_for :pictures
+
   validates :description, length: { maximum: 200 }
   validates :host_id, presence: true
 

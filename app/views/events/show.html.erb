@@ -7,9 +7,9 @@
     <section>
       <%= render 'shared/stats' %>
     </section>
-      <% if host? %>
+      <% if current_user.following_host? || current_user.admin? %>
       <section>
-        <%= link_to "Invite your friends", uploaders_event_path, class: "btn btn-large btn-primary" %>
+        <%= link_to "Upload Pictures", new_picture_path(:event_id => @event), class: "btn btn-large btn-primary" %>
       <% end %>
     </section>
     <section>
@@ -25,11 +25,13 @@
   </aside>
 <% if current_user.following_host? || current_user.admin? %>
 <div class="span8">
-  <%= link_to 'Upload a new picture', new_picture_path(:event_id => @event) %>
 <div class="hero-unit">  
   <% for picture in @event.pictures %>
-  <%= image_tag picture.image_url.to_s %>
-  Uploaded by <%= User.find(picture.user_id).name %>, <%= time_ago_in_words(picture.created_at) %> ago.
+  <br>
+  <div><p>
+  <%= image_tag picture.image_url(:thumb) %>
+  <br>Uploaded by <%= User.find(picture.user_id).name %>, <%= time_ago_in_words(picture.created_at) %> ago.
+  </div></p>
   <% end %>
 </div>
 <% else %>

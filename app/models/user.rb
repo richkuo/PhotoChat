@@ -17,15 +17,15 @@ class User < ActiveRecord::Base
    
    has_many :invitations, foreign_key: "event_id", dependent: :destroy
    has_many :events, foreign_key: "host_id", dependent: :destroy
-
-   has_many :pictures
-            
+   
    has_many :followed_users, through: :relationships, source: :followed
    
    has_many :reverse_relationships, foreign_key: "followed_id",
                                     class_name: "Relationship",
                                     dependent: :destroy
    has_many :followers, through: :reverse_relationships, source: :follower
+
+   has_many :pictures
 
 
    before_save { |user| user.email = email.downcase }
