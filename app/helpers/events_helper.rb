@@ -5,7 +5,7 @@ module EventsHelper
    end
 
    def current_event
-     @current_event ||= Event.find_by_id(params[:id])
+     @current_event ||= Event.find(params[:id])
    end
 
    def current_event?(event)

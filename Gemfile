@@ -10,6 +10,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'paperclip'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'jquery-fileupload-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

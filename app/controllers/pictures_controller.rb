@@ -3,6 +3,16 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
 
    def new
      @picture = Picture.new(:event_id => params[:event_id], :user_id => current_user.id)
+
+     respond_to do |format|
+       format.html
+       format.json { render json: @picture }
+     end
+
+   end
+
+   def show
+     @picture = Picture.find(params[:id])
    end
 
    def index
@@ -10,8 +20,7 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
    end
 
    def create
-     @picture = Picture.new(params[:picture])
-     #@picture.image = params[:picture][:image]
+     @picture = Picture.new(:event_id => params[:event_id], :user_id => current_user.id, :image => params[:image])
      if @picture.save
        flash[:success] = "Successfully uploaded the picture! Feel free to add more."
        respond_to do |format|
@@ -21,12 +30,12 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
            :layout => false
          }
          format.json{
-           render :json => [@picture.to_jq_upload].to_json
+           render :json => [@picture.to_jq_upload].to_json, status: :created, location: @picture
          }
          end
      else
        flash[:error] = "You did not select a file to upload."
-       render :json => [{:error => "custom_failure"}], :status => 304
+       format.json { render json: @picture.errors, status: :unprocessable_entity }
      end
    end
 
@@ -34,7 +43,12 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
      @picture = Picture.find(params[:id])
      @picture.destroy
      flash[:notice] = "Successfully deleted the picture."
-     render :json => true
+
+     respond_to do |format|
+       format.html { redirect_to pictures_url }
+       format.json {head :no_content }
+     end
+
    end
 
 end
