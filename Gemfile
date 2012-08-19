@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
-gem 'bootstrap-sass'
-gem 'jquery-rails', '2.0.0'
+gem 'rails', '3.2.8'
+gem 'bootstrap-sass', '2.0.0'
+gem 'jquery-rails'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 
-gem 'paperclip'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'jquery-fileupload-rails'
