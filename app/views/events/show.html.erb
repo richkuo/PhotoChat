@@ -9,8 +9,8 @@
     </section>
       <% if current_user.following_host? || current_user.admin? %>
       <section>
-        <%= link_to "Upload Pictures", new_event_picture_path(@event), class: "btn btn-large btn-primary" %>
-        | <%= link_to "View All Pictures", event_pictures_path(@event), class: "btn btn-large btn-success" %>
+        <%= link_to "Upload Pictures", new_event_picture_path(@event), class: "btn btn-large btn-success" %>
+        | <%= link_to "View All Pictures", event_pictures_path(@event), class: "btn btn-large btn-info" %>
       <% end %>
     </section>
     <section>
