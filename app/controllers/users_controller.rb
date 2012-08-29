@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @microposts = @user.microposts.paginate(page: params[:page])
       @events = @user.events.paginate(page: params[:page])
+      #@event ||= Event.find(params[:event_id])
    end
 
   def new

@@ -14,6 +14,7 @@ class EventsController < ApplicationController
 
    def _uploader_form
      @user = User.find(params[:id])
+     @event = Event.find(params[:id])
    end
 
    def viewers

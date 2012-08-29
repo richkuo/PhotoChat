@@ -8,6 +8,16 @@
     | Already invited to your event.
   <% end %>
   <% if current_user.admin? && !current_user?(user) %>
+  <% if current_user.following?(user) %>
+    <%= form_for(current_user.relationships.find_by_followed_id(user), html: { method: :delete}, remote: true) do |f| %>
+    <%= f.submit "un-invite", class: "btn btn-large" %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.invitations.build(uploader_id: user.id), remote: true) do |f| %>
+    <%= f.hidden_field :uploader_id %>
+    <%= f.submit "invite", class: "btn btn-large btn-primary" %>
+    <% end %>
+  <% end %>
     | <%= link_to "delete", user, method: :delete, data: {confirm: "Are you sure you want to permanently delete this user?" } %>
        <% end %>
 </li>

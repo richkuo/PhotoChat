@@ -4,15 +4,17 @@ class InvitationsController <ApplicationController
 
    def create
      @user = User.find_by_id(params[:invitation][:uploader_id])
+     @event = Event.find_by_id(params[:invitation][:event_id])
      current_event.add_uploader!(@user)
-     #respond_to do |format|
-      # format.html { redirect_to uploaders_path}
-       #format.js
-     #end
+     respond_to do |format|
+       format.html { redirect_to event_user_path(@event, user)}
+       format.js
+     end
    end
 
    def destroy
      @user = Invitation.find(params[:id]).uploader
+     @event = Event.find(params[:event_id])
      current_event.remove_uploader!(@user)
      respond_to do |format|
        format.html { redirect_to @user }

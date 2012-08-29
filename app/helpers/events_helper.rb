@@ -16,4 +16,9 @@ module EventsHelper
      current_user.id == current_event.host_id
    end
 
+   def uploader?(other_user)
+     invitations.find_by_uploader_id(other_user.id)
+   end
+     
+
 end

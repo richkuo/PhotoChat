@@ -7,6 +7,11 @@
     <section>
       <%= render 'shared/stats' %>
     </section>
+    <section>
+      <% if current_user.admin? %>
+        <%= link_to "Invite Your Friends", uploaders_event_path, class: "btn btn-block btn-large" %>
+      <% end %>
+    </section>
       <% if current_user.following_host? || current_user.admin? %>
       <section>
         <%= link_to "Upload Pictures", new_event_picture_path(@event), class: "btn btn-large btn-primary" %>
@@ -15,8 +20,7 @@
     </section>
     <section>
       Number of attendees in this event: 
-      <% current_event.uploaders.count %>
-      <%= User.find(current_event.host_id).followers.count%>
+      <%= current_event.uploaders.count %>
       <br>Host ID:
       <%= current_event.host_id %>
       <br>Number of pictures in this event:
