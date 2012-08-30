@@ -12,9 +12,12 @@
       </section>
     </aside>
     <div class="span8">
-      <ol class="hero-unit">
-      <%= render @events %>
-      </ol>
+    <div class="hero-unit">
+      <h2>Events you have been invited to:</h2>
+      <%= render current_user.events_attended %>
+      <h2>Events you created:</h2>
+      <%= render current_user.events_hosted %>
+   </div>  
     </div>
   </div>
 <% else %>

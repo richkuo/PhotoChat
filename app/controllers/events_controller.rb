@@ -17,9 +17,6 @@ class EventsController < ApplicationController
      @event = Event.find(params[:id])
    end
 
-   def viewers
-   end
-
    def show
      @event = Event.find(params[:id])
      @pictures = Picture.paginate(page: params[:page])
@@ -30,13 +27,13 @@ class EventsController < ApplicationController
    end
 
    def create
-     @event = current_user.events.build(params[:event])
+     @event = current_user.events_hosted.build(params[:event])
      if @event.save
        flash[:success] = "Event created!"
        @event.host_id = current_user.id
-       redirect_to @event
+       redirect_to root_path
      else
-       redirect_to 'new'
+       redirect_to current_user
      end
    end
 

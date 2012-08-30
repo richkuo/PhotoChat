@@ -1,0 +1,18 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <%= render 'shared/user_info' %>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+    <section>
+      <%= render 'shared/host_event' %>
+    </section>
+  </aside>
+  <div class="span8">
+ <%= current_event %>
+    <%= render 'uploader_form' if host?(current_event) %>
+  </div>
+</div>

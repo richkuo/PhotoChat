@@ -1,4 +1,4 @@
-<% if current_user.admin? %>
+<% if host?(current_event) %>
 <% provide(:title, @event.title) %>
 <div class="row">
   <aside class="span4">
@@ -12,24 +12,31 @@
       This event has <%= current_event.uploaders.count %> uploaders.
     </section>
   </aside>
-<% if host? %>
+<% if host?(current_event) %>
 <div class="span8">
 <h1>Invite your friends to your event!</h1><br>
 <h2>They can upload pictures!</h2><br>
 
+<h3>People already invited:</h3>
+<ul class="users">
+  <% current_event.invitations.each do |invitation| %>
+  <li>
+    <%= gravatar_for invitation.uploader, size: 59 %>
+    <%= link_to invitation.uploader.name, event_uploader_path(current_event, invitation.uploader) %>
+    <%= invitation.event %>
+    <%= invitation.uploader.name %>
+  </li>
+  <% end %>
+</ul>
+
+<h3>People not invited:</h3>
 <ul class="users">
   <% @users.each do |user| %>
   <li>
-  <% unless current_event.host_id == user.id %>
-    <%= gravatar_for user, size: 59 %>
-    <%= link_to user.name, event_user_path(@event, user) %>
-    <%= render 'uploader_form' %>
-    <% if current_user.following?(user) %>
-    | Already invited!
-    <% else %>
-    | Not invited yet.
+    <% unless current_event.uploader?(user) || current_event.host_id == user.id %>
+      <%= gravatar_for user, size: 59 %>
+      <%= link_to user.name, event_uploader_path(current_event, user) %>
     <% end %>
-  <% end %>
   </li>
   <% end %>
 <% end %>
