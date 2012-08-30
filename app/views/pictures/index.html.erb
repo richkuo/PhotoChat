@@ -24,7 +24,7 @@
 <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
 <script src="js/bootstrap-image-gallery.min.js"></script>
 
-<% if current_user.following_host? || current_user.admin?%>
+<% if current_user.invitations.find_by_event_id(params[:event_id]) || host?(current_event) %>
   <div class="hero-unit">
 <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery" data-selector="div.gallery-item">
     <%= render @pictures %>

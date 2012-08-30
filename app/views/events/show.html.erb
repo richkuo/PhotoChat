@@ -7,23 +7,31 @@
     <section>
       <%= render 'shared/stats' %>
     </section>
-      <% if current_user.following_host? || current_user.admin? %>
+      <% if host?(@event) %>
       <section>
+<<<<<<< HEAD
         <%= link_to "Upload Pictures", new_event_picture_path(@event), class: "btn btn-large btn-success" %>
+=======
+        <%= link_to "Invite Your Friends To This Event!", event_uploaders_path(@event), class: "btn btn-block btn-large" %>
+      </section>
+      <% end %>
+      <% if current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
+      <section>
+        <%= link_to "Upload Pictures", new_event_picture_path(@event), class: "btn btn-large btn-warning" %>
+>>>>>>> upload
         | <%= link_to "View All Pictures", event_pictures_path(@event), class: "btn btn-large btn-info" %>
       <% end %>
     </section>
     <section>
       Number of attendees in this event: 
-      <% current_event.uploaders.count %>
-      <%= User.find(current_event.host_id).followers.count%>
+      <%= @event.uploaders.count %>
       <br>Host ID:
-      <%= current_event.host_id %>
+      <%= @event.host_id %>
       <br>Number of pictures in this event:
       <%= @event.pictures.count %>
     </section>
   </aside>
-<% if current_user.following_host? || current_user.admin? %>
+<% if current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
 <div class="span8">
 <h1><%= @event.title %></h1><br>
 <h2><%= @event.description %><br><br></h2>

@@ -1,2 +1,2 @@
-$("#uploader_form").html("<%= escape_javascript(render('events/remove_uploader')) %>")
-$("#uploaders").html('<=% @event.uploaders.count %>')
+$("#uploader_form").html("<%= escape_javascript(render('uploaders/remove_uploader')) %>")
+$("#uploaders").html('<%= @event.uploaders.count %>')

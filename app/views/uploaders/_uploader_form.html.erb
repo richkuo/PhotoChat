@@ -1,0 +1,8 @@
+<div id="uploader_form">
+<%= @user.name %>
+  <% if current_event.uploader?(@user) %>
+    <%= render 'remove_uploader' %>
+  <% else %>
+    <%= render 'add_uploader' %>
+  <% end %>
+  </div>
