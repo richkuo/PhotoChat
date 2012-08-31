@@ -1,9 +1,26 @@
 <% @user ||= current_user %>
 <div class="stats">
-  <a href="<%= user_path(@user) %>">
-      Uploaded <%= pluralize(@user.pictures.count, "picture") %>
+<section>  
+<a href="<%= user_path(@user) %>">
+    Uploaded <%= pluralize(@user.pictures.count, "picture") %>
   </a>
-
+</section>
+<section>
+  Hosted <%= pluralize(@user.events_hosted.count, "event") %>
+  <ul>
+  <% @user.events_hosted.each do |host| %>
+   <br /><%= link_to host.title, event_path(host) %>
+  <% end %>
+  </ul>
+</section>
+<section>
+  Attending <%= pluralize(@user.events_attended.count, "event") %>
+  <ul>
+  <% @user.events_attended.each do |attend| %>
+    <br /><%= link_to attend.title, event_path(attend) %>
+  <% end %>
+  </ul>
+</section>
 <% if current_user.admin? %>
 
   <a href="<%= following_user_path(@user) %>">

@@ -23,7 +23,11 @@
     <% end %>
       <h3>Number of events hosted: <%= @user.events_hosted.count %></h3>
       <ol class="microposts">
-        <%= render @events %>
+        <% @user.events_hosted.each do |event| %>
+	  <li>
+	    <%= link_to event.title, event_path(event) %>
+	  </li>
+        <% end %>
       </ol>
   </div>
 </div>
