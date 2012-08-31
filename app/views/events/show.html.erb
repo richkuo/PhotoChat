@@ -9,16 +9,12 @@
     </section>
       <% if host?(@event) %>
       <section>
-<<<<<<< HEAD
-        <%= link_to "Upload Pictures", new_event_picture_path(@event), class: "btn btn-large btn-success" %>
-=======
         <%= link_to "Invite Your Friends To This Event!", event_uploaders_path(@event), class: "btn btn-block btn-large" %>
       </section>
       <% end %>
       <% if current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
       <section>
         <%= link_to "Upload Pictures", new_event_picture_path(@event), class: "btn btn-large btn-warning" %>
->>>>>>> upload
         | <%= link_to "View All Pictures", event_pictures_path(@event), class: "btn btn-large btn-info" %>
       <% end %>
     </section>
