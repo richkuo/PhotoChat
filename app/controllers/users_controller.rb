@@ -69,6 +69,10 @@ class UsersController < ApplicationController
      render 'show_follow'
    end
 
+   def pictures
+     @user = User.find(params[:id])
+   end
+
    private
 
      def correct_user

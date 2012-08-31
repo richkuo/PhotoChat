@@ -5,17 +5,24 @@
       <%= render 'shared/user_info' %>
     </section>
 
-    <section>
       <%= render 'shared/host_event' %>
-    </section>
- 
+    
+    <% if current_user == @user %>  
     <section>
       <%= render 'shared/stats' %>
     </section>
- </aside>
-  <div class="span8">
+    <% end %>
+  
+  </aside>
  
-    %= render 'follow_form' if current_user.admin? || @user.id == 1%>
+  <div class="span8">
+  <% if current_user == @user %>
+  <div>
+    <a href="<%= pictures_user_path %>">
+      <h3>Uploaded <%= pluralize current_user.pictures.count, "picture" %></h3>
+    </a><br><br>
+  </div>
+
     <% if @user.microposts.any? %>
       <h3>Number of posts: <%= @user.microposts.count %></h3>
       <ol class="microposts">
@@ -23,13 +30,28 @@
       </ol>
       <%= will_paginate @microposts %>
     <% end %>
-      <h3>Number of events hosted: <%= @user.events_hosted.count %></h3>
-      <ol class="microposts">
-        <% @user.events_hosted.each do |event| %>
-	  <li>
-	    <%= link_to event.title, event_path(event) %>
-	  </li>
-        <% end %>
-      </ol>
+
+    <h3>Number of events you have been invited to: <%= @user.events_attended.count %></h3>
+    <ol class="microposts">
+      <li>
+        <%= render @user.events_attended %>
+      </li>
+    </ol>
+
+    <h3>Number of events you have hosted: <%= @user.events_hosted.count %></h3>
+    <ol class="microposts">
+      <li>
+          <%= render @user.events_hosted %>
+      </li>
+    </ol>
+  
+  <% else %>
+  
+  <h2>Hi <%= current_user.name %>, user profiles are coming soon!<br></h2>
+  
+  <h3>You will see if <%= @user.name %> is attending any of your hosted events, or if you are attending any of <%= @user.name %>'s hosted events.</h3>
+  
+  <% end %>
+  
   </div>
 </div>

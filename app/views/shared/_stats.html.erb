@@ -1,10 +1,5 @@
 <% @user ||= current_user %>
 <div class="stats">
-<section>  
-<a href="<%= user_path(@user) %>">
-    Uploaded <%= pluralize(@user.pictures.count, "picture") %>
-  </a>
-</section>
 <section>
   Hosted <%= pluralize(@user.events_hosted.count, "event") %>
   <ul>
@@ -21,6 +16,7 @@
   <% end %>
   </ul>
 </section>
+
 <% if current_user.admin? %>
 
   <a href="<%= following_user_path(@user) %>">

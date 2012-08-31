@@ -12,8 +12,11 @@
       This event has <%= current_event.uploaders.count %> uploaders.
     </section>
   </aside>
+
 <% if host?(current_event) %>
+
 <div class="span8">
+
 <h1>Invite your friends to your event!</h1><br>
 <h2>They can upload pictures!</h2><br>
 
@@ -23,21 +26,21 @@
   <li>
     <%= gravatar_for invitation.uploader, size: 59 %>
     <%= link_to invitation.uploader.name, event_uploader_path(current_event, invitation.uploader) %>
-    <%= invitation.event %>
-    <%= invitation.uploader.name %>
   </li>
   <% end %>
 </ul>
 
+<br>
+
 <h3>People not invited:</h3>
 <ul class="users">
   <% @users.each do |user| %>
-  <li>
     <% unless current_event.uploader?(user) || current_event.host_id == user.id %>
+    <li>
       <%= gravatar_for user, size: 59 %>
       <%= link_to user.name, event_uploader_path(current_event, user) %>
+    </li>
     <% end %>
-  </li>
   <% end %>
 <% end %>
 </ul>

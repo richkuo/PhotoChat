@@ -1,4 +1,4 @@
-<%= form_for(current_event.invitations.build(uploader_id: @user.id), remote: true) do |f| %>
+<%= form_for(@event.invitations.build(uploader_id: @user.id), remote: true) do |f| %>
   <div><%= f.hidden_field :uploader_id %>
   <%= f.hidden_field :event_id %></div>
   <%= f.submit "Invite", class: "btn btn-large btn-primary" %>

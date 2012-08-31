@@ -4,15 +4,21 @@
     <section>
       <%= render 'shared/user_info' %>
     </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
-    <section>
+      
       <%= render 'shared/host_event' %>
-    </section>
+    
+      <%= render 'shared/stats' %>
   </aside>
   <div class="span8">
- <%= current_event %>
+
+<% unless current_user?(@user) %>
+
     <%= render 'uploader_form' if host?(current_event) %>
+
+<% else %>
+
+You cannot invite yourself!
+
+<% end %>
   </div>
 </div>
