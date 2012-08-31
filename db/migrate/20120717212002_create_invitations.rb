@@ -9,6 +9,7 @@ class CreateInvitations < ActiveRecord::Migration
 
     add_index :invitations, :event_id
     add_index :invitations, :uploader_id
+    add_index :invitations, [:event_id, :uploader_id], unique: true
 
   end
 end
