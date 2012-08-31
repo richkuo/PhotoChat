@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
    before_filter :signed_in_user, only: [:uploaders, :create, :destroy]
-   before_filter :host_user, only: [:uploaders, :destroy]
+   before_filter :host_user, only: :destroy
 
 
    def index
@@ -46,7 +46,8 @@ class EventsController < ApplicationController
    private
 
      def host_user
-       redirect_to root_path unless current_user.id == current_event.host_id
+       @event = Event.find(params[:id])
+       redirect_to root_path unless current_user.id == @event.host_id
      end
 
 

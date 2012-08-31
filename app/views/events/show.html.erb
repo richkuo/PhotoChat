@@ -1,13 +1,12 @@
 <%= provide(:title, @event.title ) %>
 <div class="row">
   <aside class="span4">
+
     <section>
       <%= render 'shared/user_info' %>
     </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
-      <% if host?(@event) %>
+
+     <% if host?(@event) %>
         <section>
           <%= link_to "Invite Your Friends To This Event!", event_uploaders_path(@event), class: "btn btn-block btn-large" %>
         </section>
@@ -19,7 +18,12 @@
         | <%= link_to "View All Pictures", event_pictures_path(@event), class: "btn btn-large btn-info" %>
         </section>
       <% end %>
-  <section>
+
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+
+    <section>
       Number of attendees in this event: 
       <%= @event.uploaders.count %>
       <br>Host ID:
@@ -28,6 +32,7 @@
       <%= @event.pictures.count %>
     </section>
   </aside>
+
 <% if current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
 <div class="span8">
 <h1><%= @event.title %></h1><br>
