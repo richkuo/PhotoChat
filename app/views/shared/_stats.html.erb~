@@ -17,6 +17,29 @@
   </ul>
 </section>
 
+<% else %>
+
+<h2><%= @user.name %>'s hosted events that you are attending:</h2>
+  <% @user.events_hosted.each do |host| %>
+    <%= render host if current_user.reverse_invitations.find_by_event_id(host.id) %><br>
+  <% end %>
+
+<br>
+
+  <h2>Your hosted events that <%= @user.name %> is attending:</h2>
+  <% current_user.events_hosted.each do |host| %>
+    <%= render host if @user.reverse_invitations.find_by_event_id(host.id) %><br>
+  <% end %>
+
+<br>
+
+  <h2>Events that you are both attending:</h2>
+  <% current_user.events_attended.each do |both| %>
+    <%= render both if @user.reverse_invitations.find_by_event_id(both.id) %><br>
+  <% end %>
+
+<br><br>
+
 <% end %>
 
 <% if current_user.admin? %>

@@ -31,7 +31,7 @@ class EventsController < ApplicationController
      if @event.save
        flash[:success] = "Event created!"
        @event.host_id = current_user.id
-       redirect_to root_path
+       redirect_to @event
      else
        redirect_to current_user
      end

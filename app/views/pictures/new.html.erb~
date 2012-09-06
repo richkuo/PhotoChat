@@ -10,7 +10,7 @@
 
   </aside>
 
-<% if current_user.reverse_invitations.find_by_event_id(params[:event_id]) || host?(@event) %>
+<% if current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
 
   <%= render 'shared/file_upload' %>
 

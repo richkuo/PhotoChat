@@ -1,3 +1,3 @@
 <%= form_for(@event.invitations.find_by_uploader_id(@user), html: { method: :delete }, remote: true) do |f| %>
-  <%= f.submit "Remove Uploader", class: "btn btn-large btn-danger" %>
+  <%= f.submit "Remove Uploader", class: "btn btn-large btn-destroy" %>
 <% end %>

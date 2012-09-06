@@ -12,7 +12,7 @@
                     <%= f.hidden_field :user_id %>
                     <%= file_field_tag :image, :multiple => true %>
                 </span>
-                <button type="submit" class="btn btn-primary start">
+                <button type="submit" class="btn btn-success start">
                     <i class="icon-upload icon-white"></i>
                     <span> Start Upload </span>
                 </button>

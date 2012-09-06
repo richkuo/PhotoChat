@@ -1,5 +1,5 @@
 <% if host?(current_event) %>
-
+Invite <%= @user.name %> to <%= current_event.title %>!
 <div id="uploader_form">
   <% if current_event.uploader?(@user) %>
     <%= render 'remove_uploader' %>

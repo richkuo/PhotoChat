@@ -5,8 +5,6 @@
       <%= render 'shared/user_info' %>
 
       <%= render 'shared/host_event' %>
-
-      <%= render 'shared/event_navigation' %>
     
       <%= render 'shared/stats' %>
 

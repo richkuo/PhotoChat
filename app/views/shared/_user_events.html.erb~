@@ -1,0 +1,69 @@
+<% if current_user?(@user) %>
+<div>
+  <h1><a href="<%= pictures_user_path %>">
+    View your uploaded <%= pluralize current_user.pictures.count, "picture" %>
+  </a></h1><br><br>
+
+    <% if @user.microposts.any? %>
+      <h3>Number of posts: <%= current_user.microposts.count %></h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+
+<h2>Number of events you have been invited to: <%= current_user.events_attended.count %></h2>
+    <ol class="microposts">
+      <li>
+        <%= render current_user.events_attended %><br>
+      </li>
+    </ol>
+
+    <h2>Number of events you have hosted: <%= current_user.events_hosted.count %></h2>
+    <ol class="microposts">
+      <li>
+          <%= render current_user.events_hosted %><br>
+      </li>
+    </ol>
+
+<% else %>
+
+<h2><%= @user.name %>'s hosted events that you are attending:</h2>
+  <% @user.events_hosted.each do |host| %>
+    <%= render host if current_user.reverse_invitations.find_by_event_id(host.id) %><br>
+  <% end %>
+
+<br>
+
+  <h2>Events that you invited <%= @user.name %> to:</h2>
+  <% current_user.events_hosted.each do |host| %>
+    <%= render host if @user.reverse_invitations.find_by_event_id(host.id) %><br>
+  <% end %>
+
+<br>
+
+  <h2>Events that you are both attending:</h2>
+  <% current_user.events_attended.each do |both| %>
+    <%= render both if @user.reverse_invitations.find_by_event_id(both.id) %><br>
+  <% end %>
+
+<br><br>
+
+<% end %>
+
+<% if current_user.admin? %>
+
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.followed_users.count %>
+    </strong>
+    following
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>
+<% end %>

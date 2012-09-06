@@ -1,3 +1,4 @@
+<section>
 <% @user ||= current_user %>
 <a href="<%= user_path(@user) %>">
   <%= gravatar_for @user, size: 65 %>
@@ -11,4 +12,4 @@
 <div>
   <%= link_to "view profile", @user %>
 </div>
-
+</section>
