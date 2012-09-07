@@ -15,7 +15,7 @@
             <li id="fat-menu" class="dropdown">
             <a href='#' class="dropdown-toggle" data-toggle="dropdown" id="navbarcustomlinks"><b class="caret" id="navbarcustomlinks"></b></a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Users", users_path, id: "navbarcustomlinks" %></li>
+                <li><% link_to "Users", users_path, id: "navbarcustomlinks" %></li>
                 <li class="divider"></li>
                 <li><%= link_to "Profile", current_user, id: "navbarcustomlinks"%></li>
                 <li><%= link_to "Settings", edit_user_path(current_user), id: "navbarcustomlinks" %></li>

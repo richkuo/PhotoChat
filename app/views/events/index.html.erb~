@@ -1,0 +1,6 @@
+<div>
+hi
+<ol class="events">
+  <%= render 'shared/user_events' %>
+</ol>
+</div>

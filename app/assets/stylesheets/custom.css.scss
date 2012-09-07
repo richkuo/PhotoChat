@@ -3,6 +3,8 @@
 $grayMediumLight: #eaeaea;
 $grayLighter: #eaeaea;
 $lightGray: #999;
+$blue: #00afff;
+$lightText: #abc;
 
 @mixin box_sizing {
    -moz-box-sizing: border-box;
@@ -15,10 +17,11 @@ $navbarBackground: #000000;
 
 /* navbar */
 
-.navbar {
-  background-color: #1e90ff;
-  .navbar-inner {
-    background-color: #1e90ff;
+#navbarcustomlinks {
+  color: $blue;
+  &:hover{
+    color: white;
+    text-decoration: none;
   }
 }
 
@@ -53,9 +56,11 @@ $navbarBackground: #000000;
   display: block;
 }
 
+/*
 .timestamp {
-  color: $grayLight;
+  color: $lightText;
 }
+*/
 
 .gravatar {
   float: left;
@@ -75,12 +80,12 @@ aside {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #999999;
+  color: #abc;
   padding-top: 9px;
   line-height: 1;
   font-weight: bold;
   &:hover {
-    color: black;
+    color: $blue;
     text-decoration: none;
   }
 }
@@ -91,12 +96,13 @@ aside {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: $lightGray;
+  border-top: 1px solid $blue;
+  color: $lightText;
   a {
-    color: #555;
+    color: $lightText;
     &:hover {
-      color: #222;
+      color: $blue;
+      text-decoration: none;
     }
   }
   small {
@@ -146,6 +152,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h2 {
   color: #999;
+}
+
+h3 {
+  color: $lightText;
 }
 
 /* miscellaneous */
@@ -218,8 +228,8 @@ aside {
 
 /* forms */
 
-input, textarea, input[type="text"], select, .uneditable-input {
-   border: 1px solid #bbb;
+input, textarea, input[type="text"], input[type="password"], select, .uneditable-input {
+   border: 2px solid $lightText;
    width: 100%;
    padding: 10px;
    height: 40px;
