@@ -1,5 +1,4 @@
 <head>
-
 <%= provide(:title, @event.title ) %>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 <%= javascript_include_tag "galleria-1.2.8.min.js" %>
@@ -23,7 +22,7 @@
 <div class="span8">
 <h1><%= @event.title %></h1>
 <h2><%= @event.description %></h2><br>
-<h3>Hosted by <%= link_to User.find_by_id(@event.host_id).name, User.find_by_id(@event.host_id) %> <%= time_ago_in_words(@event.created_at) %><br>
+<h3>Hosted by <%= link_to User.find_by_id(@event.host_id).name, User.find_by_id(@event.host_id) %> <%= time_ago_in_words(@event.created_at) %> ago<br>
 <br><%= pluralize(@event.pictures.count, "Picture")%> | <%= pluralize(@event.uploaders.count, "Attendee") %></h3>
 
 <%= link_to "Fullscreen", event_pictures_path(@event) %><br>
@@ -44,6 +43,4 @@ Sorry <%= current_user.name %>, you need to be invited to this event to view it.
 <script>
   Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
   Galleria.run('#galleria');
-
-
 </script>

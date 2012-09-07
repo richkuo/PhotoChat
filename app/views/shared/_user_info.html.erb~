@@ -1,7 +1,7 @@
 <section>
 <% @user ||= current_user %>
 <a href="<%= user_path(@user) %>">
-  <%= gravatar_for @user, size: 65 %>
+  <img src="<%= gravatar_for @user, size: 65 %>" class="img-circle">
 </a>
 <h1>
   <%= link_to @user.name, @user %>

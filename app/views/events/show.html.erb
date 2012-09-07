@@ -1,5 +1,4 @@
 <head>
-
 <%= provide(:title, @event.title ) %>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 <%= javascript_include_tag "galleria-1.2.8.min.js" %>
@@ -40,10 +39,8 @@ Sorry <%= current_user.name %>, you need to be invited to this event to view it.
 
 </div>
 <% end %>
-</div>
 <script>
   Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
   Galleria.run('#galleria');
-
-
 </script>
+</div>

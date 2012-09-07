@@ -5,26 +5,30 @@
         <div class="row fileupload-buttonbar">
             <div class="span7">
                 <!-- The fileinput-button span is used to style the file input field as button -->
-                <span class="btn btn-info fileinput-button">
+                <span class="btn btn-info btn-block btn-large fileinput-button">
                     <i class="icon-plus icon-white"></i>
-                    <span> Add Files... </span>
+                    <span>Click to Add Files or Drag and Drop Here</span>
                     <%= f.hidden_field :event_id %>
                     <%= f.hidden_field :user_id %>
                     <%= file_field_tag :image, :multiple => true %>
                 </span>
-                <button type="submit" class="btn btn-primary start">
-                    <i class="icon-upload icon-white"></i>
-                    <span> Start Upload </span>
-                </button>
+<br><br><br>
                 <button type="reset" class="btn btn-warning cancel">
                     <i class="icon-ban-circle icon-white"></i>
-                    <span><%= t('fileupload.cancel_upload') %></span>
+                    <span>Cancel All</span>
                 </button>
+
+                <button type="submit" class="btn btn-success start">
+                    <i class="icon-upload icon-white"></i>
+                    <span>Start Upload!</span>
+                </button>
+
                 <button type="button" class="btn btn-danger delete">
                     <i class="icon-trash icon-white"></i>
-                    <span><%= t('fileupload.delete_multi') %></span>
+                    <span><%= t('fileupload.delete_selected') %></span>
                 </button>
-                <input type="checkbox" class="toggle">
+
+                <input type="checkbox" class="toggle"> Check All
             </div>
             <div class="span5">
                 <!-- The global progress bar -->
@@ -68,7 +72,7 @@
       <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
     </td>
     <td class="start">{% if (!o.options.autoUpload) { %}
-      <button class="btn btn-primary">
+      <button class="btn btn-success">
         <i class="icon-upload icon-white"></i>
         <span>{%=locale.fileupload.start%}</span>
       </button>
