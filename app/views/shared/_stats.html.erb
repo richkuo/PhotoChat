@@ -1,10 +1,10 @@
-<% if current_user?(@user) %>
 <div class="stats">
+<% if current_user?(@user) %>
 <section>
   Hosted <%= pluralize(@user.events_hosted.count, "event") %>
   <ul>
   <% @user.events_hosted.each do |host| %>
-   <br /><%= link_to host.title, event_path(host) %>
+   <br><%= link_to host.title, event_path(host) %>
   <% end %>
   </ul>
 </section>
@@ -12,7 +12,7 @@
   Attending <%= pluralize(@user.events_attended.count, "event") %>
   <ul>
   <% @user.events_attended.each do |attend| %>
-    <br /><%= link_to attend.title, event_path(attend) %>
+    <br><%= link_to attend.title, event_path(attend) %>
   <% end %>
   </ul>
 </section>
