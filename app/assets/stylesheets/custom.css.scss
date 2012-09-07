@@ -10,6 +10,18 @@ $lightGray: #999;
    box-sizing: border-box;
 }
 
+$navbarBackgroundHighlight: #1e90ff;
+$navbarBackground: #000000;
+
+/* navbar */
+
+.navbar {
+  background-color: #1e90ff;
+  .navbar-inner {
+    background-color: #1e90ff;
+  }
+}
+
 /* users index */
 
 .users {
@@ -63,12 +75,12 @@ aside {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: #999999;
   padding-top: 9px;
   line-height: 1;
   font-weight: bold;
   &:hover {
-    color: red;
+    color: white;
     text-decoration: none;
   }
 }
@@ -116,7 +128,7 @@ section {
 }
 
 textarea {
-  resize: vertical;
+  /* resize: vertical;*/
 }
 
 .center {
