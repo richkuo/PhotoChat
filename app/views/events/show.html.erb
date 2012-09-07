@@ -30,9 +30,8 @@
 <div class="hero-unit">
 
 <div id="galleria">
-
 <% @event.pictures.each do |picture| %>
-    <a href="<%= picture.image %>"><%= image_tag picture.image if picture.image? %></a>
+    <a href="<%= picture.image %>"><img src="<%= picture.image.url %>" data-title="Uploaded by <%= User.find_by_id(picture.user_id).name %>"></a>
   <% end %>
 
 </div>
@@ -46,4 +45,6 @@ Sorry <%= current_user.name %>, you need to be invited to this event to view it.
 <script>
   Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
   Galleria.run('#galleria');
+
+
 </script>
