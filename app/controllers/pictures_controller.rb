@@ -49,7 +49,7 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
      flash[:notice] = "Successfully deleted the picture."
 
      respond_to do |format|
-       format.html { redirect_to pictures_url }
+       format.html { redirect_to(:back) }
        format.json {head :no_content }
      end
 

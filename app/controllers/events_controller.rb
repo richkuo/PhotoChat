@@ -33,14 +33,14 @@ class EventsController < ApplicationController
        @event.host_id = current_user.id
        redirect_to @event
      else
-       redirect_to current_user
+       redirect_to(:back)
      end
    end
 
    def destroy
      @event = Event.find(params[:id])
      @event.destroy
-     redirect_to current_user
+     redirect_to(:back)
    end
 
    private

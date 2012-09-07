@@ -7,7 +7,7 @@ class InvitationsController < ApplicationController
      @event = Event.find_by_id(params[:invitation][:event_id])
      @event.add_uploader!(@user)
      respond_to do |format|
-       format.html { redirect_to(:back)}
+       format.html { redirect_to(:back) }
        format.js
      end
    end
@@ -17,7 +17,7 @@ class InvitationsController < ApplicationController
      @event = Invitation.find(params[:id]).event
      @event.remove_uploader!(@user)
      respond_to do |format|
-       format.html { redirect_to root_path }
+       format.html { redirect_to(:back) }
        format.js
      end
    end
