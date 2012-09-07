@@ -23,7 +23,7 @@
 
 <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
   <% @event.pictures.each do |picture| %>
-    <a href="<%= picture.image %>" rel="gallery"><%= image_tag picture.image.thumb if picture.image? %></a>
+    <a href="<%= picture.image %>" rel="gallery"><%= image_tag picture.image if picture.image? %></a>
   <% end %>
 
 </div>
