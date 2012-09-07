@@ -1,4 +1,5 @@
 <%= provide(:title, @event.title ) %>
+<%= render 'shared/image_gallery' %>
 <div class="row">
   <aside class="span4">
 
