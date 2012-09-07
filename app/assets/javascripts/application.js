@@ -15,3 +15,5 @@
 //= require bootstrap
 //= require_tree .
 //= require jquery-fileupload
+//= require galleria-1.2.8
+//= require galleria.classic
