@@ -1,21 +1,22 @@
+<div class="left-sidenav">
+<div class="btn-group btn-group-vertical btn-block">
+
 <% if host?(@event) %>
-  <section>
-    <%= link_to "Invite Your Friends!", event_uploaders_path(@event), class: "btn btn-block btn-large btn-success" %>
-  </section>
+
+  <a href="<%= event_uploaders_path(@event) %>"><button class="btn"><i class="icon-chevron-right"></i>Invite Your Friends!</button></a>
+
 <% end %>
+
 
 <% if current_user.reverse_invitations.find_by_event_id(params[:event_id]) || current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
-  <section>
-    <%= link_to "Upload Pictures", new_event_picture_path(@event), class: "btn btn-large btn-primary btn-block" %>
-  </section>
-  <section>
-    <%= link_to "View Pictures", event_path(@event), class: "btn btn-large btn-warning btn-block" %>
-  </section>
+
+  <a href="<%= new_event_picture_path(@event) %>"><button class="btn"><i class="icon-chevron-right"></i>Upload Pictures</button></a>
+
+  <a href="<%= event_path(@event) %>"><button class="btn"><i class="icon-chevron-right"></i>View Event</button></a>
+
 <% end %>
 
-<section>
-  <%= link_to "Other Events", current_user, class: "btn btn-large btn-block" %>
-</section>
+<a href="<%= user_path(current_user) %>"><button class="btn"><i class="icon-chevron-right"></i>Other Events</button></a>
 
-  <% link_to_function "Back", "history.back()", class: "btn btn-large btn-block" %>
-
+</div>
+</div>

@@ -23,7 +23,8 @@
 <h3>Hosted by <%= link_to User.find_by_id(@event.host_id).name, User.find_by_id(@event.host_id) %> <%= time_ago_in_words(@event.created_at) %> ago<br>
 <br><%= pluralize(@event.pictures.count, "Picture")%> | <%= pluralize(@event.uploaders.count, "Attendee") %></h3>
 
-<%= link_to "Fullscreen", event_pictures_path(@event) %><br>
+<a href="<%= event_pictures_path(@event) %>"><i class="icon-resize-full icon-black"> </i>Full Screen</a>
+<br>
 <br>
 <div id="galleria">
 <% @event.pictures.each do |picture| %>
@@ -35,10 +36,11 @@
 
 Sorry <%= current_user.name %>, you need to be invited to this event to view it.
 
-</div>
+
 <% end %>
 <script>
   Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
   Galleria.run('#galleria');
 </script>
+</div>
 </div>

@@ -137,23 +137,23 @@ aside {
   &:hover {
     color: $blue;
     text-decoration: none;
-    -webkit-animation-name: pulsate;
-    -webkit-animation-duration: 1.5s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
-    -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-name: pulsate;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-timing-function: ease-in-out;
 
-    -moz-animation-name: pulsate;
-    -moz-animation-duration: 1.5s;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-direction: alternate;
-    -moz-animation-timing-function: ease-in-out;
+  -moz-animation-name: pulsate;
+  -moz-animation-duration: 2s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: alternate;
+  -moz-animation-timing-function: ease-in-out;
 
-    animation-name: pulsate;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: ease-in-out;
+  animation-name: pulsate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
   }
 }
 
@@ -212,16 +212,15 @@ textarea {
 }
 
 a, a:hover {
-  text-shadow: none;
   text-decoration: none;
-  -webkit-transition: all linear .7s;
-  -moz-transition: all linear .7s;
-  transition: all linear .7s;
+  text-shadow: none;
+  -webkit-transition: all linear .5s;
+  -moz-transition: all linear .5s;
+  transition: all linear .5s;
 }
 a:hover {
   color: $blue;
   text-shadow: -2px 2px 7px $lightText;
-  text-decoration: underline;
 }
 
 /* typography */
