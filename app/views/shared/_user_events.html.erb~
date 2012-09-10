@@ -1,8 +1,5 @@
 <% if current_user?(@user) %>
 <div>
-  <h1><a href="<%= pictures_user_path %>">
-    View your <%= pluralize current_user.pictures.count, "picture" %>
-  </a></h1><br><br>
 
     <% if @user.microposts.any? %>
       <h3>Number of posts: <%= current_user.microposts.count %></h3>

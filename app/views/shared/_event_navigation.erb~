@@ -16,7 +16,7 @@
 
 <% end %>
 
-<a href="<%= current_user %>"><button class="btn"><i class="icon-chevron-right"></i>Other Events</button></a>
+<a href="<%= user_path(current_user) %>"><button class="btn"><i class="icon-chevron-right"></i>Other Events</button></a>
 
 </div>
 </div>

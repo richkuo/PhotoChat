@@ -1,15 +1,5 @@
 <% if signed_in? %>
   <div class="row">
-    <aside class="span4">
-
-        <%= render 'shared/user_info' %>
-
-        <%= render 'shared/host_event' %>
- 
-        <% render 'shared/stats' %>
-
-   </aside>
-    <div class="span8">
     <div class="hero-unit">
       <h2>Events you have been invited to:</h2><br />
       <ul>
@@ -21,7 +11,6 @@
         <%= render current_user.events_hosted %>
       </ul>
     </div>  
-    </div>
   </div>
 <% else %>
 
@@ -30,7 +19,7 @@
 
 <h3>The easiest way to create and share entire photo albums with your friends.</h3>
 
-<br><h2>PhotoChat is free! So take a minute to sign up, host an event, and invite your friends!</h2>
+<h2>PhotoChat is free! So take a minute to sign up, host an event, and invite your friends!</h2>
 <br>
 <div class="row">
   <div class="span6">
@@ -43,8 +32,5 @@
     <% end %>
   </div>
 </div>
-</div>
-<div class="hero-unit">
-   <h4>Already signed up? Great! Welcome back.<p><p><p><%= link_to "Sign in", signin_path, class: "btn btn-large btn-primary" %></h4>
 </div>
 <% end %>

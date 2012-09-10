@@ -4,23 +4,28 @@
       <nav>
 
         <% if signed_in? %>
-
-          <%= link_to "PhotoChat (Beta)", root_path, id: "logo" %>
-          <ul class="nav pull-right" data-toggle="collapse" data-target=".nav-collapse">
-            <li><% link_to "Home", root_path, id: "navbarcustomlinks" %></li>
+          <ul class="nav pull-left" data-toggle="collapse" data-target=".nav-collapse">
+            <%= link_to "Home", root_path, id: "logo" %>
             <li class="divider-vertical"></li>
-            <li><% link_to "Users", users_path, id: "navbarcustomlinks" %></li>
+            <li><a id="logo" href="<%= new_event_path %>">New Event</a></li>
+            </ul>
+          <ul class="nav pull-right" data-toggle="collapse" data-target=".nav-collapse">
+
+            <li class="divider-vertical"></li>
  
             <li><% link_to "Pictures", '#' %>
             <li id="fat-menu" class="dropdown">
             <a href='#' class="dropdown-toggle" data-toggle="dropdown" id="navbarcustomlinks"><b class="caret" id="navbarcustomlinks"></b></a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Users", users_path, id: "navbarcustomlinks" %></li>
+                <li><% link_to "Users", users_path, id: "navbarcustomlinks" %></li>
+
+                <li><%= link_to gravatar_for(current_user, size:45)+current_user.name, current_user, id: "navbarcustomlinks" %>
+
                 <li class="divider"></li>
-                <li><%= link_to "Profile", current_user, id: "navbarcustomlinks"%></li>
-                <li><%= link_to "Settings", edit_user_path(current_user), id: "navbarcustomlinks" %></li>
-                 <li class="divider"></li>
+
+                <li><%= link_to "Account Settings", edit_user_path(current_user), id: "navbarcustomlinks" %></li>
                  <li><%= link_to "Sign out", signout_path, method: "delete", id: "navbarcustomlinks" %></li>
+
               </ul>
             </li>
             <li class="divider-vertical"></li>
@@ -30,7 +35,7 @@
 
           <%= link_to "#WELCOME", root_path, id: "logo" %>
           <ul class="nav pull-right">
-            <li><%= link_to "Sign in", signin_path %></li>
+            <li><%= link_to "Sign in", signin_path, id: "logo" %></li>
           </ul>
 
         <% end %>

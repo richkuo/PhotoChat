@@ -1,18 +1,29 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
+<div class="row hero-unit">
+  <aside class="span2">
 
-      <%= render 'shared/user_info' %>
-
-      <%= render 'shared/host_event' %>
+    <%= gravatar_for @user, size: 200 %> 
 
     <% if current_user.admin? %>  
       <%= render 'shared/stats' %>
     <% end %>
   
   </aside>
+  <div class="span5 offset1">
+
+    <h1><%= @user.name %></h1>
+
+    <h2><a href="<%= pictures_user_path %>"><%= pluralize current_user.pictures.count, "picture" %></a></h2>
+  <% if current_user?(@user) %>
+    <h3><%= link_to "Account Settings", edit_user_path(current_user) %></h3>
+  <% end %>
+
+  </div>
+</div>
+<br>
+<div class="row">
  
-  <div class="span8">
+  <div class="span9 offset1">
   
     <%= render 'shared/user_events' %>
   

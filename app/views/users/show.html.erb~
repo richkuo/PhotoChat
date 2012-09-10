@@ -1,71 +1,31 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
+<div class="row hero-unit">
+  <aside class="span2">
 
-      <%= render 'shared/user_info' %>
-
-      <%= render 'shared/host_event' %>
+    <%= gravatar_for @user, size: 200 %> 
 
     <% if current_user.admin? %>  
       <%= render 'shared/stats' %>
     <% end %>
   
   </aside>
- 
-  <div class="span8">
+  <div class="span5 offset1">
+
+    <h1><%= @user.name %></h1>
+
+    <h2><a href="<%= pictures_user_path %>"> <%= pluralize current_user.pictures.count, "picture" %></a></h2>
   <% if current_user?(@user) %>
-  <div>
-    <a href="<%= pictures_user_path %>">
-      <h3>View all uploaded <%= pluralize current_user.pictures.count, "picture" %></h3>
-    </a><br><br>
+    <h3><%= link_to "Account Settings", edit_user_path(current_user) %></h3>
+  <% end %>
+
   </div>
-
-    <% if @user.microposts.any? %>
-      <h3>Number of posts: <%= @user.microposts.count %></h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
-
-    <h2>Number of events you have been invited to: <%= @user.events_attended.count %></h2>
-    <ol class="microposts">
-      <li>
-        <%= render @user.events_attended %><br>
-      </li>
-    </ol>
-
-    <h2>Number of events you have hosted: <%= @user.events_hosted.count %></h2>
-    <ol class="microposts">
-      <li>
-          <%= render @user.events_hosted %><br>
-      </li>
-    </ol>
-  
-  <% else %>
-  
-  <h2><%= @user.name %>'s hosted events that you are attending:</h2>
-  <% @user.events_hosted.each do |host| %>
-    <%= render host if current_user.reverse_invitations.find_by_event_id(host.id) %><br>
-  <% end %>
-
+</div>
 <br>
-
-  <h2>Your hosted events that <%= @user.name %> is attending:</h2>
-  <% current_user.events_hosted.each do |host| %>
-    <%= render host if @user.reverse_invitations.find_by_event_id(host.id) %><br>
-  <% end %>
-
-<br>
-
-  <h2>Events that you are both attending:</h2>
-  <% current_user.events_attended.each do |both| %>
-    <%= render both if @user.reverse_invitations.find_by_event_id(both.id) %><br>
-  <% end %>
-
-<br><br>
-
-  <% end %>
+<div class="row">
+ 
+  <div class="span9 offset1">
+  
+    <%= render 'shared/user_events' %>
   
   </div>
 </div>
