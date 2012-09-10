@@ -18,6 +18,8 @@ Blog::Application.routes.draw do
 
    match '/about', to: 'pages#about'
    match '/contact', to: 'pages#contact'
+   match '/terms', to: 'pages#terms'
+   match '/privacy', to: 'pages#privacy'
    
    match '/signup', to: 'users#new'
 

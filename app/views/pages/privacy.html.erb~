@@ -1,0 +1,9 @@
+<%= provide(:title, "Privacy Policy" ) %>
+
+<h1>Privacy Policy</h1>
+
+<div class="hero-unit">
+
+<h2>Coming Soon<br><br>
+</h2>
+</div>
