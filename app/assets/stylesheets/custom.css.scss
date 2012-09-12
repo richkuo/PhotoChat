@@ -42,6 +42,15 @@ $navbarBackground: #000000;
   }
 }
 
+.icon-chevron-right {
+  float: right;
+  vertical-align: middle;
+  margin-top: 3px;
+  &:hover {
+    color: $blue;
+  }
+}
+
 /* users index */
 
 .users {

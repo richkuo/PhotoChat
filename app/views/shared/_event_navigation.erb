@@ -1,20 +1,30 @@
-<div class="left-sidenav">
-<div class="btn-group btn-group-vertical btn-block">
+<div class="containter-fluid">
+  <div class="row-fluid">
+    <div class="span1">
+      <div class="dropdown">
 
-<% if host?(@event) %>
+        <a href='#' class="dropdown-toggle" data-toggle="dropdown" id="navbarcustomlinks"><button class="btn btn-primary"><b class="caret" id="navbarcustomlinks"></b></button></a>
 
-  <a href="<%= event_uploaders_path(@event) %>"><button class="btn"><i class="icon-chevron-right"></i>Invite Your Friends!</button></a>
+        <ul class="dropdown-menu">
+          <li><a href="<%= event_path(@event) %>">Back to <%= @event.title %><i class="icon-chevron-right"></i></a></li>
+          <li class="divider"></li>
+          <% if host?(@event) %>
+    
+            <h5><li><a href="<%= event_uploaders_path(@event) %>">Invite Friends<i class="icon-chevron-right"></i></a></li>
+  
+          <% end %>
 
-<% end %>
+          <% if current_user.reverse_invitations.find_by_event_id(params[:event_id]) || current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
 
+            <li><a href="<%= new_event_picture_path(@event) %>">Upload Pictures<i class="icon-chevron-right"></i></a></li>
 
-<% if current_user.reverse_invitations.find_by_event_id(params[:event_id]) || current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
+          <% end %>
 
-  <a href="<%= new_event_picture_path(@event) %>"><button class="btn"><i class="icon-chevron-right"></i>Upload Pictures</button></a>
+          <li class="divider"></li>
 
-  <a href="<%= event_path(@event) %>"><button class="btn"><i class="icon-chevron-right"></i>View Event</button></a>
+          <li><a href="<%= events_path %>">Other Events<i class="icon-chevron-right"></i></a></li></h5>
 
-<% end %>
+        </ul>
 
-</div>
-</div>
+      </div>
+    </div>

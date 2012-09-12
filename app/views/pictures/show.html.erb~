@@ -1,35 +1,28 @@
 <%= provide(:title, @event.title ) %>
 
-<%= render 'shared/event_navigation' %>
+<div class="row">
 
-<div class="span10">
 <% if current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
+
+<div class="span10 offset1">
 
 <h1><%= @event.title %></h1>
 <h2><%= @event.description %></h2>
 <h3>Hosted by <%= link_to User.find_by_id(@event.host_id).name, User.find_by_id(@event.host_id) %> <%= time_ago_in_words(@event.created_at) %> ago | <%= pluralize(@event.pictures.count, "Picture")%> | <%= pluralize(@event.uploaders.count, "Attendee") %></h3>
 
-<a href="<%= event_pictures_path(@event) %>"><i class="icon-resize-full icon-black"></i>Full Screen</a>
+<a href="<%= event_path(@event) %>"><i class="icon-arrow-left icon-black"></i>Back to Event</a>
 <br>
-<br>
+<div>
 
-<%= will_paginate %>
+<%= will_paginate :page_links => false %>
+<%= render @thumb %>
 
-<% @event.pictures.each do |picture| %>
-  <%= link_to image_tag(picture.image.thumb), event_picture_path(@event, picture) %>
-<% end %>
+</div><br>
 
-<% if @event.pictures.count == 0 %>
-  There are no pictures in this album.
-<% end %>
-
-<br>
 <% else %>
 
 Sorry <%= current_user.name %>, you need to be invited to this event to view it.
 
 <% end %>
-
-</div>
 </div>
 </div>

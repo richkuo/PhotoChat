@@ -2,3 +2,5 @@
 <% if current_user.id == picture.user_id %>
    | <%= link_to "Delete", event_picture_path(@event, picture), method: :delete, data: { confirm: "Are you sure you want to permanently delete this picture?" }, title: @event.title %>
 <% end %>
+
+<%= link_to image_tag(picture.image.thumb), event_picture_path(@event, picture) %>

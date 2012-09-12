@@ -1,48 +1,48 @@
 <% if host?(current_event) %>
 <% provide(:title, @event.title) %>
-<div class="row">
-  <aside class="span4">
-
-      <%= render 'shared/user_info' %>
 
       <%= render 'shared/event_navigation' %>
- 
-  </aside>
 
-<% if host?(current_event) %>
+<div class="row span10">
 
-<div class="span8">
-
-<h1>Invite your friends to your <%= current_event.title %>!</h1><br>
+<h1>Invite your friends to <%= current_event.title %>!</h1><br>
 <h2>They can upload pictures!</h2><br>
 
+<div class="span5">
 <h3>People invited: (<%= current_event.uploaders.count %>)</h3>
 <ul class="users">
   <% current_event.invitations.each do |invitation| %>
   <li>
     <%= gravatar_for invitation.uploader, size: 59 %>
-    <%= link_to invitation.uploader.name, event_uploader_path(current_event, invitation.uploader) %>
+    <%= link_to invitation.uploader.name, event_uploader_path(current_event, invitation.uploader) %><br>
+      <%= invitation.uploader.email %>
   </li>
   <% end %>
 </ul>
+</div>
 
-<br>
-
-<h3>People available for invitation:</h3>
+<div class="span5 offset1">
+<h3>People not invited:</h3>
 <ul class="users">
   <% @users.each do |user| %>
     <% unless current_event.uploader?(user) || current_event.host_id == user.id %>
     <li>
       <%= gravatar_for user, size: 59 %>
-      <%= link_to user.name, event_uploader_path(current_event, user) %>
+      <%= link_to user.name, event_uploader_path(current_event, user) %><br>
+      <%= user.email %>
     </li>
     <% end %>
   <% end %>
-<% end %>
+
+
 <br><br>
 </ul>
-</div>
 </div>
 <% else %>
 Sorry, you do not have access to this page. Please use your browser's back button to go back to the previous page.
 <% end %>
+
+
+</div>
+</div>
+</div>

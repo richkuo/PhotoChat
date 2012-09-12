@@ -1,16 +1,9 @@
 <%= provide(:title, @event.title ) %>
-<div class="row">
-  <aside class="span4">
-
-    <%= render 'shared/user_info' %>
 
     <%= render 'shared/event_navigation' %>
 
-    <% render 'shared/stats' %>
-
-  </aside>
-
-<% if current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
+<div class="row span10">
+<% if current_user.reverse_invitations.find_by_event_id(params[:event_id]) || host?(@event) %>
 
   <%= render 'shared/file_upload' %>
 
@@ -20,4 +13,6 @@
 
 <% end %>
 
+</div>
+</div>
 </div>

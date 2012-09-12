@@ -1,39 +1,29 @@
-<head>
-
 <%= provide(:title, @event.title ) %>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-<%= javascript_include_tag "galleria-1.2.8.min.js" %>
-<style>
-  #galleria{ width: 940px; height: 940px; background: #000 }
-</style>
-</head>
 
-<% if current_user.reverse_invitations.find_by_event_id(params[:id]) || current_user.reverse_invitations.find_by_event_id(params[:event_id]) || host?(@event) %>
+<div class="row">
+
+<% if current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
+
+<div class="span10 offset1">
 
 <h1><%= @event.title %></h1>
-<h2><%= @event.description %></h2><br>
-<h3>Hosted by <%= link_to User.find_by_id(@event.host_id).name, User.find_by_id(@event.host_id) %> | 
-<%= pluralize(@event.uploaders.count, "Attendee") %> | <%= pluralize(@event.pictures.count, "Picture") %></h3>
+<h2><%= @event.description %></h2>
+<h3>Hosted by <%= link_to User.find_by_id(@event.host_id).name, User.find_by_id(@event.host_id) %> <%= time_ago_in_words(@event.created_at) %> ago | <%= pluralize(@event.pictures.count, "Picture")%> | <%= pluralize(@event.uploaders.count, "Attendee") %></h3>
 
-<%= link_to "Back", event_path(@event) %>
-<br><br>
+<a href="<%= event_path(@event) %>"><i class="icon-arrow-left icon-black"></i>Back to Event</a>
+<br>
+<div>
 
-<div id="galleria">
-<% @event.pictures.each do |picture| %>
-    <a href="<%= picture.image %>"><img src="<%= picture.image.url %>" data-title="Uploaded by <%= User.find_by_id(picture.user_id).name %>"></a>
-  <% end %>
+<%= will_paginate @pictures, :page_links => false %>
+<%= render @pictures %>
+
+
 </div><br>
 
 <% else %>
 
 Sorry <%= current_user.name %>, you need to be invited to this event to view it.
 
-</div>
 <% end %>
-
-<script>
-  Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
-  Galleria.run('#galleria');
-
-
-</script>
+</div>
+</div>

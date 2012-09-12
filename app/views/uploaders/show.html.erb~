@@ -1,19 +1,27 @@
 <% provide(:title, @user.name) %>
+
+      <%= render 'shared/event_navigation' %>
+
+<div class="row span10">
 <div class="row">
-  <aside class="span4">
- 
-      <%= render 'shared/user_info' %>
+<div class="span2">
 
-      <%= render 'shared/host_event' %>
-    
-      <%= render 'shared/stats' %>
+  <h1><%= gravatar_for @user, size: 85 %></h1>
 
-  </aside>
-  <div class="span8">
+</div>
+
+<div class="span5">
+
+  <h2><%= @user.name %></h2>
+  <h3><%= @user.email %></h3>
+
+</div>
+
+<div class="span4">
 
 <% unless current_user?(@user) %>
 
-    <%= render 'uploader_form' if host?(current_event) %>
+  <h1><%= render 'uploader_form' if host?(current_event) %></h1>
 
 <% else %>
 
@@ -21,9 +29,19 @@ You cannot invite yourself!
 
 <% end %>
 
+</div>
+
+<br><br>
 <br><br>
 
-<%= render 'shared/user_events' %>
+</div>
 
-  </div>
+<div class="row span10">
+
+  <%= render 'shared/user_events' %>
+
+</div>
+
+</div>
+</div>
 </div>
