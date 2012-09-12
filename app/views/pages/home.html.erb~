@@ -23,7 +23,7 @@
 <br>
 
 <div class="span4 hero-unit">
-  <h3>New to PhotoChat? Take a minute to sign up.</h3>
+  <h3>New to 1337Pic? Take a minute to sign up.</h3>
   <br>
     <%= form_for(@user) do |f| %>
 
