@@ -16,6 +16,7 @@ Blog::Application.routes.draw do
 
    root to: 'pages#home'
 
+   match '/what', to: 'pages#what'
    match '/about', to: 'pages#about'
    match '/contact', to: 'pages#contact'
    match '/terms', to: 'pages#terms'

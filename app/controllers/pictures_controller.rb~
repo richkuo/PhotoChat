@@ -14,8 +14,9 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
 
    def show
      @event = Event.find(params[:event_id])
-     @picture = Picture.find(params[:id])
+     @picture = Picture.find(params[:event_id])
      @pictures = Picture.paginate(page: params[:page], :per_page => 1)
+     @thumbs = Picture.paginate(page: params[:page], :per_page => 6)
    end
 
    def index

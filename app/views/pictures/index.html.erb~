@@ -15,7 +15,7 @@
 <div>
 
 <%= will_paginate @pictures, :page_links => false %>
-<%= render @pictures, :locals => {:pics => true} %>
+
 
 
 </div><br>

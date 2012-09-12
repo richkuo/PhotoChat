@@ -14,23 +14,41 @@
   </div>
 <% else %>
 
-<div class="hero-unit">
 <h1>Welcome to PhotoChat</h1>
 
-<h3>The easiest way to create and share entire photo albums with your friends.</h3>
+<h2>The free and easy way to create and share entire photo albums with your friends.</h2>
 
-<h2>PhotoChat is free! So take a minute to sign up, host an event, and invite your friends!</h2>
 <br>
-<div class="row">
-  <div class="span6">
+
+  <div class="span4 hero-unit">
+<h3>New to PhotoChat? Take a minute to sign up.</h3>
+<br>
     <%= form_for(@user) do |f| %>
 
       <%= render 'users/fields', f: f %>
 
-      <%= f.submit "Sign Up", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Sign Up for PhotoChat", class: "btn btn-large btn-primary" %>
 
     <% end %>
+<br><br>
   </div>
+
+<div class="span4 hero-unit">
+<h3>Already a member? Great! Welcome back.</h3>
+<br>
+    <%= form_for(:session, url: sessions_path) do |f| %>
+      
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+    <% end %>
+
 </div>
+<div class="span4 hero-unit">
+<h2><%= link_to "What is PhotoChat?", what_path %></h2>
 </div>
 <% end %>

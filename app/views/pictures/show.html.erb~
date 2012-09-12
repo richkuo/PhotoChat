@@ -10,12 +10,11 @@
 <h2><%= @event.description %></h2>
 <h3>Hosted by <%= link_to User.find_by_id(@event.host_id).name, User.find_by_id(@event.host_id) %> <%= time_ago_in_words(@event.created_at) %> ago | <%= pluralize(@event.pictures.count, "Picture")%> | <%= pluralize(@event.uploaders.count, "Attendee") %></h3>
 
-<a href="<%= event_path(@event) %>"><i class="icon-arrow-left icon-black"></i>Back to Event</a>
+<a href="<%= event_path(@event) %>"><i class="icon-arrow-left icon-black"></i>Back to Event</a> | <a href="<%= event_pictures_path(@event) %>"><i class="icon-resize-full icon-black"></i>Full Screen</a>
 <br>
 <div>
 
-<%= will_paginate :page_links => false %>
-<%= render @thumb %>
+<%= render @picture %>
 
 </div><br>
 

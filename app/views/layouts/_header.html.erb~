@@ -15,7 +15,7 @@
  
             <li><% link_to "Pictures", '#' %>
             <li id="fat-menu" class="dropdown">
-            <a href='#' class="dropdown-toggle" data-toggle="dropdown" id="navbarcustomlinks"><i class="icon-user" id="navbarcustomlinks"></b></a>
+            <a href='#' class="dropdown-toggle" data-toggle="dropdown" id="navbarcustomlinks"><i class="icon-user" id="navbarcustomlinks"></i></a>
               <ul class="dropdown-menu">
                 <li><% link_to "Users", users_path, id: "navbarcustomlinks" %></li>
 
