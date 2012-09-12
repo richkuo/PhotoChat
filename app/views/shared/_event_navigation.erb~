@@ -1,6 +1,6 @@
 <div class="containter-fluid">
   <div class="row-fluid">
-    <div class="span2">
+    <div class="span1">
       <div class="dropdown">
 
         <a href='#' class="dropdown-toggle" data-toggle="dropdown" id="navbarcustomlinks"><button class="btn btn-primary"><b class="caret" id="navbarcustomlinks"></b></button></a>
@@ -10,7 +10,7 @@
           <li class="divider"></li>
           <% if host?(@event) %>
     
-            <h5><li><a href="<%= event_uploaders_path(@event) %>">Invite Friends<i class="icon-chevron-right"></i></a></li>
+            <li><a href="<%= event_uploaders_path(@event) %>">Invite Friends<i class="icon-chevron-right"></i></a></li>
   
           <% end %>
 
@@ -22,7 +22,7 @@
 
           <li class="divider"></li>
 
-          <li><a href="<%= events_path %>">Other Events<i class="icon-chevron-right"></i></a></li></h5>
+          <li><a href="<%= events_path %>">Other Events<i class="icon-chevron-right"></i></a></li>
 
         </ul>
 

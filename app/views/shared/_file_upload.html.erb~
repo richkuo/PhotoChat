@@ -1,10 +1,7 @@
-
-<h1>Upload pictures to <%= Event.find(params[:event_id]).title %></h1><br>
 <%= form_for [@event, @picture], :html => { :multipart => true, :id => "fileupload" } do |f| %>
-<h3>We currently support .jpg .jpeg .png .gif file types.</h3><br>
 
 <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-        <div class="row fileupload-buttonbar span10">
+        <div class="row fileupload-buttonbar span9">
 
                 <!-- The fileinput-button span is used to style the file input field as button -->
                 <span class="btn btn-info btn-block btn-large fileinput-button">
@@ -45,9 +42,10 @@
         <!-- The table listing the files available for upload/download -->
         <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
         </table>
+
     <% end %>
 
-</div>
+
 
 <script>
   var fileUploadErrors = {

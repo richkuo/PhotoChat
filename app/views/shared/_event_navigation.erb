@@ -9,8 +9,8 @@
           <li><a href="<%= event_path(@event) %>">Back to <%= @event.title %><i class="icon-chevron-right"></i></a></li>
           <li class="divider"></li>
           <% if host?(@event) %>
-    
-            <h5><li><a href="<%= event_uploaders_path(@event) %>">Invite Friends<i class="icon-chevron-right"></i></a></li>
+
+            <li><a href="<%= event_uploaders_path(@event) %>">Invite Friends<i class="icon-chevron-right"></i></a></li>
   
           <% end %>
 
@@ -22,7 +22,7 @@
 
           <li class="divider"></li>
 
-          <li><a href="<%= events_path %>">Other Events<i class="icon-chevron-right"></i></a></li></h5>
+          <li><a href="<%= events_path %>">Other Events<i class="icon-chevron-right"></i></a></li>
 
         </ul>
 
