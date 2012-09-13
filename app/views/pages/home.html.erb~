@@ -1,15 +1,32 @@
 <% if signed_in? %>
+
+  <h1>Dashboard</h1>
+  <h3>1337Pic is currently in beta.</h3>
+<br>
+
   <div class="row">
-    <div class="hero-unit">
-      <h2>Events you have been invited to:</h2><br>
-      <ul>
-        <%= render current_user.events_attended %>
-      </ul>
-      <br>
-      <h2>Events you have hosted:</h2><br>
-      <ul>
-        <%= render current_user.events_hosted %>
-      </ul>
+    <div class="span5 hero-unit">
+<h2>Events you have been invited to: <%= current_user.events_attended.count %></h2>
+    <ol class="microposts">
+      <li>
+        <%= render current_user.events_attended %><br>
+      </li>
+    </ol>
+</div>
+
+    <div class="span5 hero-unit">
+
+    <h2>Events you have hosted: <%= current_user.events_hosted.count %></h2>
+    <ol class="microposts">
+      <li>
+        <% if current_user.events_hosted.count == 0 %>
+	  <h4>You have not hosted any events. <a href="<%= new_event_path %>">Click here to host your first event!</a><h4>
+	<% else %>
+	  <%= render current_user.events_hosted %>
+	<% end %>
+      </li>
+    </ol>
+
     </div>  
   </div>
 
@@ -22,8 +39,9 @@
 
 <br>
 
-<div class="span4 hero-unit">
-  <h3>New to 1337Pic? Take a minute to sign up.</h3>
+<div class="span5 hero-unit">
+  <h3>New to 1337Pic?
+  <br>Take a minute to sign up.</h3>
   <br>
     <%= form_for(@user) do |f| %>
 
@@ -32,12 +50,13 @@
       <%= f.submit "Sign Up for 1337Pic", class: "btn btn-large btn-primary" %>
 
     <% end %>
-<br><br>
+
 </div>
 
-<div class="span4 hero-unit">
-<h3>Already a member? Great! Welcome back.</h3>
-<br>
+<div class="span5 hero-unit">
+  <h3>Already a member?
+  <br>Welcome back.</h3>
+  <br>
     <%= form_for(:session, url: sessions_path) do |f| %>
       
       <%= f.label :email %>
@@ -50,8 +69,8 @@
     <% end %>
 
 </div>
-<div class="span4 hero-unit">
-<h2><%= link_to "What is 1337Pic?", what_path %></h2>
+<div class="span5 hero-unit">
+<h2><%= link_to "1337Pic? What's 1337Pic?", what_path %></h2>
 </div>
 </div>
 <% end %>

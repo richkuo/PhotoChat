@@ -15,6 +15,14 @@ $lightText: #abc;
 $navbarBackgroundHighlight: #1e90ff;
 $navbarBackground: #000000;
 
+.hero-unit {
+  padding: 30px;
+}
+
+.row {
+  margin-left: -20px;
+}
+
 /* left side navigation */
 
 .left-sidenav .icon-chevron-right {
@@ -240,8 +248,8 @@ h1, h2, h3, h4, h5 {
 }
 
 #thumb {
-  padding: 0px 1px;
-  line-height: 7.5;
+  padding: 0px 0px;
+  line-height: 7.4;
 }
 
 h2 {

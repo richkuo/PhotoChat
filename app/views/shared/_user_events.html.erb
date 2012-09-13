@@ -1,5 +1,4 @@
 <% if current_user?(@user) %>
-<div>
 
     <% if @user.microposts.any? %>
       <h3>Number of posts: <%= current_user.microposts.count %></h3>
@@ -9,19 +8,29 @@
       <%= will_paginate @microposts %>
     <% end %>
 
+<div class="row">
+<div class="span5 hero-unit">
 <h2>Events you have been invited to: <%= current_user.events_attended.count %></h2>
     <ol class="microposts">
       <li>
         <%= render current_user.events_attended %><br>
       </li>
     </ol>
+</div>
 
+<div class="span5 hero-unit">
     <h2>Events you have hosted: <%= current_user.events_hosted.count %></h2>
     <ol class="microposts">
       <li>
-          <%= render current_user.events_hosted %><br>
+        <% if current_user.events_hosted.count == 0 %>
+	  <h4>You have not hosted any events. <a href="<%= new_event_path %>">Click here to host your first event!</a><h4>
+	<% else %>
+	  <%= render current_user.events_hosted %>
+	<% end %>
       </li>
     </ol>
+</div>
+</div>
 
 <% else %>
 
