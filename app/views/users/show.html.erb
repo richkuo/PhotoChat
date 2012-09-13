@@ -1,6 +1,8 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span2 offset2">
+<br>
+
+  <aside class="span3 offset1">
 
     <%= gravatar_for @user, size: 200 %> 
 
@@ -10,8 +12,8 @@
   
   </aside>
 
-  <div class="span7 offset1">
-
+  <div class="span6 offset0">
+<br>
     <h1><%= @user.name %></h1>
 
     <h2><a href="<%= pictures_user_path %>"><%= pluralize current_user.pictures.count, "picture" %></a></h2>
@@ -22,11 +24,6 @@
   </div>
 </div>
 
-<br><br>
+<br>
 
-<div class="row">
-  
-    <%= render 'shared/user_events' %>
-  
-</div>
-
+<%= render 'shared/user_events' %>

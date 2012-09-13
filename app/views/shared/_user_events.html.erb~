@@ -9,6 +9,9 @@
     <% end %>
 
 <div class="row">
+<ol class="microposts">
+  <li></li>
+</ol>
 <div class="span5 hero-unit">
 <h2>Events you have been invited to: <%= current_user.events_attended.count %></h2>
     <ol class="microposts">
@@ -18,7 +21,7 @@
     </ol>
 </div>
 
-<div class="span4 hero-unit">
+<div class="span5 hero-unit">
     <h2>Events you have hosted: <%= current_user.events_hosted.count %></h2>
     <ol class="microposts">
       <li>

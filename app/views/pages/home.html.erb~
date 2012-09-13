@@ -2,8 +2,10 @@
 
   <h1>Dashboard</h1>
   <h3>1337Pic is currently in beta.</h3>
-<br>
 
+<ol class="microposts">
+  <li></li>
+</ol>
   <div class="row">
     <div class="span5 hero-unit">
 <h2>Events you have been invited to: <%= current_user.events_attended.count %></h2>
@@ -32,13 +34,13 @@
 
 <% else %>
 
-<div class="row">
+
 <h1>Welcome to 1337Pic</h1>
 
 <h2>The free and easy way to create and share entire photo albums with your friends.</h2>
 
 <br>
-
+<div class="row">
 <div class="span5 hero-unit">
   <h3>New to 1337Pic?
   <br>Take a minute to sign up.</h3>

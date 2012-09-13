@@ -7,8 +7,11 @@
       </ol>
       <%= will_paginate @microposts %>
     <% end %>
-
+<ol class="microposts">
+  <li></li>
+</ol>
 <div class="row">
+
 <div class="span5 hero-unit">
 <h2>Events you have been invited to: <%= current_user.events_attended.count %></h2>
     <ol class="microposts">
