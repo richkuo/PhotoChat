@@ -28,14 +28,15 @@
                 </button>
 
                 <input type="checkbox" class="toggle"> Check All
-            </div>
+        </div>
+
             <div class="span6">
                 <!-- The global progress bar -->
                 <div class="progress progress-success progress-striped active fade">
                     <div class="bar" style="width:0%;"></div>
                 </div>
             </div>
-        </div>
+
         <!-- The loading indicator is shown during image processing -->
         <div class="fileupload-loading"></div>
         <br>
