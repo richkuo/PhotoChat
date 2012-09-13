@@ -1,10 +1,10 @@
 <div class="hero-unit">
-      <h2>Events you have been invited to:</h2><br />
+      <h2>Events you have been invited to:</h2><br>
       <ul>
         <%= render current_user.events_attended %>
       </ul>
       <br />
-      <h2>Events you have hosted:</h2><br />
+      <h2>Events you have hosted:</h2><br>
       <ul>
         <%= render current_user.events_hosted %>
       </ul>
