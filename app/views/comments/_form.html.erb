@@ -1,0 +1,20 @@
+<%= form_for [@event, @picture, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+    <div class="error_messages">
+      <h4>Please correct the following errors.</h4>
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :user_id %>
+    <%= f.text_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

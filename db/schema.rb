@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120829051139) do
+ActiveRecord::Schema.define(:version => 20120914223148) do
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -20,7 +31,6 @@ ActiveRecord::Schema.define(:version => 20120829051139) do
     t.boolean  "private"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "image"
   end
 
   add_index "events", ["host_id", "created_at"], :name => "index_events_on_host_id_and_created_at"
@@ -32,9 +42,9 @@ ActiveRecord::Schema.define(:version => 20120829051139) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "invitations", ["event_id", "uploader_id"], :name => "index_invitations_on_event_id_and_uploader_id", :unique => true
   add_index "invitations", ["event_id"], :name => "index_invitations_on_event_id"
   add_index "invitations", ["uploader_id"], :name => "index_invitations_on_uploader_id"
-  add_index "invitations", ["uploader_id"], :name => "index_invitations_on_viewer_id_and_uploader_id", :unique => true
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
