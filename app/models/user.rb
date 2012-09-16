@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
    has_many :pictures
 
+   has_many :comments, foreign_key: "user_id", class_name: "Comment"
 
    before_save { |user| user.email = email.downcase }
    before_save :create_remember_token

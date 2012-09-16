@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @commentable.comments.new(params[:comment] :user_id => current_user.id)
+    @comment = @commentable.comments.new(params[:comment])
       #:content => params[:content], :user_id => current_user.id)
     if @comment.save
       redirect_to(:back)
