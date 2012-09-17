@@ -7,6 +7,8 @@ class Picture < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   has_many :images
+  
+  has_many :comments, as: :commentable
 
   def to_jq_upload
     {
