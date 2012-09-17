@@ -11,16 +11,12 @@ gem 'carrierwave'
 gem 'fog', '~> 1.3.1'
 gem 'rmagick'
 gem 'jquery-fileupload-rails', :git => "git://github.com/richkuo/jquery-fileupload-rails"
-gem 'aws-sdk'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
    gem 'sqlite3', '1.3.5'
-end
-
-group :test, :development do
-   gem 'rspec-rails', '2.10.0'
+   gem 'rspec-rails', '2.11.0'
    gem 'guard-rspec', '0.5.5'
    gem 'annotate', '~> 2.4.1.beta', group: :development
    gem 'guard-spork', '0.3.2'
