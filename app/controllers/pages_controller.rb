@@ -19,8 +19,10 @@ class PagesController < ApplicationController
   end
 
   def feedback
-    @micropost = current_user.microposts.build
-    @microposts = Micropost.paginate(page: params[:page])
+    if signed_in?
+      @micropost = current_user.microposts.build
+      @microposts = Micropost.paginate(page: params[:page])
+    end
   end
 
 end
