@@ -5,6 +5,7 @@ $grayLighter: #eaeaea;
 $lightGray: #999;
 $blue: #00afff;
 $lightText: #abc;
+$blue2: #99ccff;
 
 @mixin box_sizing {
    -moz-box-sizing: border-box;
@@ -253,11 +254,15 @@ h1, h2, h3, h4, h5 {
 }
 
 h2 {
-  color: #999;
+  color: $blue2;
 }
 
 h3 {
   color: $lightText;
+}
+
+h4 {
+  color: $blue2;
 }
 
 /* miscellaneous */

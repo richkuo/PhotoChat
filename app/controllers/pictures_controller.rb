@@ -17,6 +17,11 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
      @picture = Picture.find(params[:id])
      @pictures = Picture.paginate(page: params[:page], :per_page => 1)
      @thumbs = Picture.paginate(page: params[:page], :per_page => 6)
+
+     @commentable = @picture
+     @comments = @commentable.comments
+     @comment = Comment.new(:user_id => current_user.id)
+
    end
 
    def index

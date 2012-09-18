@@ -23,6 +23,10 @@ class EventsController < ApplicationController
 # Possibly because the view folder is events, not pictures.
 # I will use @pictures in the view file just for naming clarity
      @events = Picture.paginate(page: params[:page])
+
+     @commentable = @event
+     @comments = @commentable.comments
+     @comment = Comment.new(:user_id => current_user.id)
    end
 
    def new
