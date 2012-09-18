@@ -1,0 +1,31 @@
+<%= provide(:title, "Feedback" ) %>
+
+<h1>Feedback</h1>
+
+<div class="hero-unit">
+<% if signed_in? %>
+<h4>We greatly appreciate your thoughts/comments/improvements on the website!</h4>
+  <%= render 'shared/micropost_form' %>
+  <div class="microposts">
+  <ul>
+    <% current_user.microposts.each do |mp| %>
+    <li><%= mp.content unless mp.created_at == nil %>
+    <br>Created <%= time_ago_in_words(mp.created_at) unless mp.created_at == nil %> ago</li>
+    <% end %>
+  </ul>
+  </div>
+
+<% end %>
+
+<% if current_user.admin? %>
+<div class="microposts">
+<ul>
+  <% @microposts.each do |mp| %>
+    <li><%=link_to  mp.user.name, mp.user %> <%= mp.content %></li>
+  <% end %>
+</ul>
+<% end %>
+
+</div>
+
+</div>

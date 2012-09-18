@@ -24,6 +24,7 @@ Blog::Application.routes.draw do
    match '/contact', to: 'pages#contact'
    match '/terms', to: 'pages#terms'
    match '/privacy', to: 'pages#privacy'
+   match '/feedback', to: 'pages#feedback'
    
    match '/signup', to: 'users#new'
 

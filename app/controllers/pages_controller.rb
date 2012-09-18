@@ -18,4 +18,9 @@ class PagesController < ApplicationController
   def what
   end
 
+  def feedback
+    @micropost = current_user.microposts.build
+    @microposts = Micropost.paginate(page: params[:page])
+  end
+
 end

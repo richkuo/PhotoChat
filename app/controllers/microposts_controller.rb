@@ -8,11 +8,12 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
-      flash[:success] = "Post success!"
-      redirect_to root_path
+      flash[:success] = "Thank you for your feedback!"
+      redirect_to(:back)
     else
       @feed_items = []
-      redirect_to root_path
+      flash[:error] = "Feedback was incomplete"
+      redirect_to(:back)
     end
   end
 
