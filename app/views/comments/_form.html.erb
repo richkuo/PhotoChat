@@ -1,3 +1,4 @@
+<div class="row">
 <%= form_for [@event, @picture, @comment] do |f| %>
   <% if @comment.errors.any? %>
     <div class="error_messages">
@@ -10,11 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field span9">
     <%= f.hidden_field :user_id %>
-    <%= f.text_field :content %>
+    <%= f.text_field :content, placeholder: "Submit a comment" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="action span1">
+    <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
   </div>
 <% end %>
+</div>

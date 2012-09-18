@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.new(params[:comment])
-      #:content => params[:content], :user_id => current_user.id)
     if @comment.save
       redirect_to(:back)
       flash[:success] = "Successfully posted comment!"
@@ -17,10 +16,23 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = @commentable.comments.find(params[:id])
+    @comment.destroy
+    flash[:alert] = "Comment successfully deleted"
+    redirect_to(:back)
+  end
+
 private
 
   def load_commentable
-    @commentable = Picture.find(params[:picture_id])
+    if params[:picture_id]
+      @commentable = Picture.find(params[:picture_id])
+    elsif params[:event_id]
+      @commentable = Event.find(params[:event_id])
+    end
+
+#    @commentable = Picture.find(params[:picture_id])
   end
 
 

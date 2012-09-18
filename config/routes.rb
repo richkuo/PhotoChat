@@ -6,7 +6,7 @@ Blog::Application.routes.draw do
    end
 
    resources :events do
-     resources :uploaders
+     resources :uploaders, :comments
      resources :pictures do
        resources :comments
      end

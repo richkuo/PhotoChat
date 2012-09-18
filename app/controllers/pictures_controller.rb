@@ -20,7 +20,7 @@ before_filter :signed_in_user, only: [:new, :create, :destroy]
 
      @commentable = @picture
      @comments = @commentable.comments
-     @comment = Comment.new
+     @comment = Comment.new(:user_id => current_user.id)
 
    end
 

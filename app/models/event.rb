@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
 
   has_many :pictures
 
+  has_many :comments, as: :commentable
+
   validates :description, length: { maximum: 200 }
   validates :host_id, presence: true
 

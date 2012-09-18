@@ -10,6 +10,7 @@ class CreateComments < ActiveRecord::Migration
     end
     
     add_index :comments, [:commentable_id, :commentable_type]
+    add_index :comments, [:user_id, :created_at]
   
   end
 
