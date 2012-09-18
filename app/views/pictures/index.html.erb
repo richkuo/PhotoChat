@@ -12,13 +12,13 @@
 
 <a href="<%= event_path(@event) %>"><i class="icon-arrow-left icon-black"></i>Back to Event</a>
 <br>
-<div>
 
 <%= will_paginate :page_links => false %>
+
+<div class="hero-unit">
+
 <%= render @pictures %>
-
-
-</div><br>
+</div>
 
 <% else %>
 

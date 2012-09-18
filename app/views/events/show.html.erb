@@ -2,7 +2,7 @@
 
 <%= render 'shared/event_navigation' %>
 
-<div class="span12">
+<div class="span11">
 <% if current_user.reverse_invitations.find_by_event_id(params[:id]) || host?(@event) %>
 
 <h1><%= @event.title %></h1>

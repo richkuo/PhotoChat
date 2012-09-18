@@ -12,16 +12,17 @@
 
 <a href="<%= event_path(@event) %>"><i class="icon-arrow-left icon-black"></i>Back to Event</a> | <a href="<%= event_pictures_path(@event) %>"><i class="icon-resize-full icon-black"></i>Slideshow</a>
 <br>
-<div>
+<div class="hero-unit">
 
 <%= render @picture %>
-
+</div>
+<div>
 <%= render 'comments/form' %>
 This picture has <%= pluralize(@picture.comments.count, "Comments") %>
 
 <%= render 'comments/comments' %>
 
-</div><br>
+</div>
 
 <% else %>
 
