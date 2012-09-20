@@ -204,7 +204,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate (~> 2.4.1.beta)
+  annotate
   bcrypt-ruby (= 3.0.1)
   bootstrap-sass (~> 2.1.0.0)
   bootstrap-will_paginate (= 0.0.6)
