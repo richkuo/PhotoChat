@@ -2,10 +2,10 @@
   <span class="content"><h2><%= link_to event.title, event %></h2></span>
   <span class="content"><h3><%= event.description %></h3></span>
   <span class="pictures"><%= pluralize(event.pictures.count, "Picture")%> | <%= pluralize(event.uploaders.count, "Attendee") %></span> | 
-  <span class="timestamp">
-    Created <%= time_ago_in_words(event.created_at) %> ago
-  </span>
+  <span class="timestamp">Created <%= time_ago_in_words(event.created_at) %> ago</span>
+
   <% if host?(event) %>
    | <%= link_to "Delete", event, method: :delete, data: { confirm: "Are you sure you want to permanently delete this event?" }, title: event.title %>
-  <% end %>
+ <% end %>
+
 </ul>

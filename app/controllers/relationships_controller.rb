@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+# Class for creating friends/followers
 
   before_filter :signed_in_user
 
@@ -21,4 +22,3 @@ class RelationshipsController < ApplicationController
   end
 
 end
-

@@ -31,9 +31,6 @@ private
     elsif params[:event_id]
       @commentable = Event.find(params[:event_id])
     end
-
-#    @commentable = Picture.find(params[:picture_id])
   end
-
 
 end

@@ -1,4 +1,5 @@
 class UploadersController < ApplicationController
+# Uploaders are users who have been invited to an event
 
   def index
     @event = Event.find(params[:event_id])

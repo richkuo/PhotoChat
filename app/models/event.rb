@@ -11,11 +11,12 @@ class Event < ActiveRecord::Base
 
   has_many :comments, as: :commentable
 
-  validates :description, length: { maximum: 200 }
+  validates :description, length: { maximum: 250 }
+ 
   validates :host_id, presence: true
 
-  #default_scope order: 'events.created_at DESC'
-
+  # Not sure if this would be good for UX
+  # default_scope order: 'events.created_at DESC'
   
   def add_uploader!(other_user)
     invitations.create!(uploader_id: other_user.id)
