@@ -1,4 +1,4 @@
-Made by Richard Kuo.
+Hi, this app is made by Richard Kuo. It is my first app and can be found at www.1337pic.com
 
 Users can host events, and invite other users as uploaders.
 
