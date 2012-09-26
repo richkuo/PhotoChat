@@ -1,31 +1,27 @@
 <head>
-
-<%= provide(:title, @user.name ) %>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-<%= javascript_include_tag "galleria-1.2.8.min.js" %>
-<style>
-  #galleria{ width: 940px; height: 940px; background: #000 }
-</style>
+  <%= provide(:title, @user.name ) %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+  <%= javascript_include_tag "galleria-1.2.8.min.js" %>
+  <style>
+    #galleria{ width: 940px; height: 940px; background: #000 }
+  </style>
 </head>
 
 <% if current_user?(@user) %>
-<h1><%= @user.name %>'s uploaded pictures.</h1><br>
-<div id="galleria">
-<% @user.pictures.each do |picture| %>
+  <h1><%= @user.name %>'s uploaded pictures.</h1><br>
+  <div id="galleria">
+  <% @user.pictures.each do |picture| %>
     <a href="<%= picture.image %>"><img src="<%= picture.image.url %>" data-title="Uploaded to <%= Event.find_by_id(picture.event_id).title %>"></a>
   <% end %>
-</div><br>
+  </div><br>
 
 <% else %>
 
-Sorry <%= current_user.name %>, you need to be invited to this event to view it.
+  Sorry <%= current_user.name %>, you do not have access to these pictures.
 
-</div>
 <% end %>
 
 <script>
   Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
   Galleria.run('#galleria');
-
-
 </script>
