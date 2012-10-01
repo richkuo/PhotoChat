@@ -49,6 +49,12 @@
 
         <%= render 'users/fields', f: f %>
 
+        <br>
+
+        <%= check_box_tag :remember_me, 1, params[:remember_me] %> Remember Me
+
+        <br>
+
         <%= f.submit "Sign Up for 1337Pic", class: "btn btn-large btn-primary" %>
 
       <% end %>
@@ -69,13 +75,16 @@
 
         <br>
 
-        <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
         <%= check_box_tag :remember_me, 1, params[:remember_me] %> Remember Me
+
+        <br>
+
+        <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
 
       <% end %>
 
   </div>
-  <div class="span5 hero-unit">
+  <div class="span5 center">
     <h3><%= link_to "Forgot password? Click here", new_password_reset_path %></h3>
   </div>
   
