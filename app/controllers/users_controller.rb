@@ -20,8 +20,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      sign_in @user
-      flash[:success] = "Welcome!"
+      if params[:remember_me]
+        sign_in @user
+      else
+        sign_in_non_remember @user
+      end
+      flash[:success] = "Welcome #{@user.name}!"
       redirect_to root_path
     else
       render 'new'
