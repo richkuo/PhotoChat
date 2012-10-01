@@ -8,8 +8,8 @@ Blog::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-#  config.action_mailer.default_url_options= { :host => 'www.1337pic.com' }
-#  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options= { :host => 'www.1337pic.com' }
+  config.action_mailer.delivery_method = :smtp
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
