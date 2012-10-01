@@ -14,7 +14,7 @@ Blog::Application.configure do
   config.action_controller.perform_caching = false
 
   # Setting mailers to be sent via Gmail
-  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.perform_deliveries = true
 
