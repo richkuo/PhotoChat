@@ -1,0 +1,28 @@
+<% provide(:title, "Reset Your Password") %>
+
+<% if signed_in? %>
+
+  <% flash[:error] = "You are already signed in!" %>
+
+<% else %>
+
+  <div class="center hero-unit">
+    <h1>Reset Your Password</h1>
+  </div>
+
+  <div class="row">
+    <div class="span6 offset3">
+      <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+        
+        <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

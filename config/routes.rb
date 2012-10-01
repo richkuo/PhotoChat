@@ -1,4 +1,8 @@
 Blog::Application.routes.draw do
+  get "password_resets/new"
+
+  get "forgot_password/new"
+
    resources :users do
      member do
        get :following, :followers, :pictures
@@ -16,6 +20,7 @@ Blog::Application.routes.draw do
    resources :microposts, only: [:create, :destroy]
    resources :relationships, only: [:create, :destroy]
    resources :invitations, only: [:create, :destroy]
+   resources :password_resets
 
    root to: 'pages#home'
 
