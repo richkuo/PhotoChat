@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20121001004319) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["user_id", "created_at"], :name => "index_comments_on_user_id_and_created_at"
 
   create_table "events", :force => true do |t|
     t.string   "title"
