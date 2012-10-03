@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :password_reset_sent_at
   has_secure_password
 
   # User behaviors
@@ -80,7 +80,7 @@ private
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
-    end while User.exists?(column = self[column])
+    end while User.exists?(column => self[column])
   end
   
   def create_remember_token
