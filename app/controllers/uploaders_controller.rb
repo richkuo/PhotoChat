@@ -1,4 +1,5 @@
 class UploadersController < ApplicationController
+  before_filter :signed_in_user
 # Uploaders are users who have been invited to an event
 
   def index

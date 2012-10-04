@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-before_filter :signed_in_user, only: [:new, :create, :destroy]
+before_filter :signed_in_user
 
   def new
     @event = Event.find(params[:event_id])
