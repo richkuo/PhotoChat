@@ -9,22 +9,26 @@
 <h2>They can upload pictures!</h2><br>
 
 <div class="span5">
-<h3>People invited: (<%= current_event.uploaders.count %>)</h3>
+  <h3>People invited: (<%= current_event.uploaders.count %>)</h3>
+  <%= will_paginate %>
 <ul class="users">
-  <% current_event.invitations.each do |invitation| %>
-  <li>
-    <%= gravatar_for invitation.uploader, size: 59 %>
-    <%= link_to invitation.uploader.name, event_uploader_path(current_event, invitation.uploader) %><br>
-      <%= invitation.uploader.email %>
-  </li>
+  <% @uploaders.each do |user| %>
+    <% if current_event.uploader?(user) && current_event.host_id != user.id %>
+    <li>
+      <%= gravatar_for user, size: 59 %>
+      <%= link_to user.name, event_uploader_path(current_event, user) %><br>
+      <%= user.email %>
+    </li>
+    <% end %>
   <% end %>
 </ul>
 </div>
 
 <div class="span5 offset1">
-<h3>People not invited:</h3>
+  <h3>People not invited:</h3>
+  <%= will_paginate %>
 <ul class="users">
-  <% @users.each do |user| %>
+  <% @uploaders.each do |user| %>
     <% unless current_event.uploader?(user) || current_event.host_id == user.id %>
     <li>
       <%= gravatar_for user, size: 59 %>

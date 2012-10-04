@@ -4,7 +4,7 @@ class UploadersController < ApplicationController
 
   def index
     @event = Event.find(params[:event_id])
-    @users = User.paginate(page: params[:page])
+    @uploaders = User.paginate(page: params[:page], :per_page => 16, :order => 'name ASC')
   end
   
   def show
