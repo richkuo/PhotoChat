@@ -10,9 +10,8 @@
 
 <div class="span5">
   <h3>People invited: (<%= current_event.uploaders.count %>)</h3>
-  <%= will_paginate %>
 <ul class="users">
-  <% @uploaders.each do |user| %>
+  <% @users.each do |user| %>
     <% if current_event.uploader?(user) && current_event.host_id != user.id %>
     <li>
       <%= gravatar_for user, size: 59 %>
