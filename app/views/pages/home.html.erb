@@ -62,7 +62,7 @@
   </div>
 
   <div class="span5 hero-unit">
-    <h3>Already a member?
+    <h3>Already a member?<%= link_to "home", root_path %>
     <br>Welcome back.</h3>
     <br>
       <%= form_for(:session, url: sessions_path) do |f| %>
