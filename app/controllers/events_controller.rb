@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :signed_in_user, only: [:uploaders, :create, :destroy]
+  before_filter :signed_in_user
   before_filter :host_user, only: :destroy
 
   def index
