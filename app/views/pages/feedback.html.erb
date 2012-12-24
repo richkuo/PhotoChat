@@ -7,10 +7,12 @@
 <h4>We greatly appreciate your thoughts/comments/improvements on the website!</h4>
   <%= render 'shared/micropost_form' %>
   <div class="microposts">
-  <ul>
+  <ul> 
     <% current_user.microposts.each do |mp| %>
-    <li><%= mp.content unless mp.created_at == nil %>
-    <br>Created <%= time_ago_in_words(mp.created_at) unless mp.created_at == nil %> ago</li>
+      <% if mp.created_at != nil %>
+        <li><%= mp.content %>
+        <br>Created <%= time_ago_in_words(mp.created_at) %> ago</li>
+      <% end %>
     <% end %>
   </ul>
   </div>
