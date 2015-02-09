@@ -1,8 +1,6 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider               => 'AWS',       # required
-    :aws_access_key_id      => 'AKIAJKR3ENXJHHP5DJKA',       # required
-    :aws_secret_access_key  => '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',       # required
     :region                 => 'us-east-1'  # optional, defaults to 'us-east-1'
   }
   config.fog_directory  = 'photochat-beta'                     # required
